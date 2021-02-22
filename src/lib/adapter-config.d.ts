@@ -1,11 +1,30 @@
 // This file extends the AdapterConfig type from "@types/iobroker"
 
+import { AnelHutCommunication } from "../AnelHutCommunication";
+
+export class AnelHut {
+	DeviceName: string;
+	DeviceIP: string;
+	UDPSendPort: string;
+	UDPRecievePort: string;
+	Username: string;
+	Password: string;
+	DeviceActive: boolean;
+	DeviceConnected: boolean;
+	LastUpdateTimestamp: string;
+	HutCommunication: AnelHutCommunication;
+}
+
+export class RelaisStatus {
+	RelaisName: string;
+	RelaisNumber: number;
+}
+
 // Augment the globally declared type ioBroker.AdapterConfig
 declare global {
 	namespace ioBroker {
 		interface AdapterConfig {
-			option1: boolean;
-			option2: string;
+			getAnelDevices: Array<AnelHut>;
 		}
 	}
 }

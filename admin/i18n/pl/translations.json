@@ -1,0 +1,15 @@
+{
+    "AdminHeaderDescription": "Dodaj tutaj swoje urządzenia Anel Hut. ",
+    "AdminHeaderNotice": "Uwaga: jeśli chcesz sterować wieloma urządzeniami chaty, użyj innego portu odbioru dla urządzenia. ",
+    "AdminHeaderNotice1": "Uwaga: jeśli chcesz sterować wieloma urządzeniami, użyj innego portu odbioru dla urządzenia.",
+    "AdminHeaderNotice2": "Możesz zmienić porty w interfejsie internetowym urządzenia. ",
+    "AdminHeaderNotice3": "Na przykład możesz użyć portu 77 dla pierwszego urządzenia, 78 dla drugiego i 79 dla trzeciego i tak dalej.",
+    "AdminHeaderNotice4": "Możesz zmienić porty w interfejsie internetowym urządzenia. ",
+    "DeviceActive": "Aktywny",
+    "DeviceIP": "IP urządzenia",
+    "DeviceName": "Nazwa urządzenia",
+    "Devices": "Urządzenia",
+    "Password": "Hasło",
+    "Username": "Nazwa Użytkownika",
+    "anelhut adapter settings": "Ustawienia adaptera dla anelhut"
+}

@@ -1,0 +1,15 @@
+{
+    "AdminHeaderDescription": "Voeg hier uw Anel Hut-apparaten toe. ",
+    "AdminHeaderNotice": "Opmerking: als u meerdere hut-apparaten wilt bedienen, gebruik dan een andere ontvangstpoort voor het apparaat. ",
+    "AdminHeaderNotice1": "Opmerking: als u meerdere apparaten wilt bedienen, gebruik dan een andere ontvangstpoort voor het apparaat.",
+    "AdminHeaderNotice2": "U kunt de poorten wijzigen op de webinterface van het apparaat. ",
+    "AdminHeaderNotice3": "U kunt bijvoorbeeld poort 77 gebruiken voor het eerste apparaat en 78 voor het tweede en 79 voor het derde, enzovoort.",
+    "AdminHeaderNotice4": "U kunt de poorten wijzigen op de webinterface van het apparaat. ",
+    "DeviceActive": "Actief",
+    "DeviceIP": "IP-adres van apparaat",
+    "DeviceName": "Toestelnaam",
+    "Devices": "Apparaten",
+    "Password": "Wachtwoord",
+    "Username": "Gebruikersnaam",
+    "anelhut adapter settings": "Adapterinstellingen voor anelhut"
+}

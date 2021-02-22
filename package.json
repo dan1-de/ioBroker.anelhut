@@ -1,6 +1,6 @@
 {
   "name": "iobroker.anelhut",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Adapter for the NET-PwrCrtl Hut of ANEL Electronic AG",
   "author": {
     "name": "dan1-de",
@@ -19,7 +19,9 @@
     "url": "https://github.com/dan1-de/ioBroker.anelhut"
   },
   "dependencies": {
-    "@iobroker/adapter-core": "^2.4.0"
+    "@iobroker/adapter-core": "^2.4.0",
+    "rxjs": "^6.6.3",
+    "dgram": "^1.0.1"
   },
   "devDependencies": {
     "@iobroker/testing": "^2.4.2",
@@ -63,7 +65,9 @@
     "test:integration": "mocha test/integration --exit",
     "test": "npm run test:ts && npm run test:package",
     "check": "tsc --noEmit",
-    "lint": "eslint --ext .ts src/"
+    "lint": "eslint --ext .ts src/",
+    "lintfix": "eslint --fix --ext  .ts src/",
+    "translate": "gulp translateAndUpdateWordsJS"
   },
   "bugs": {
     "url": "https://github.com/dan1-de/ioBroker.anelhut/issues"
