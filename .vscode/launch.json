@@ -1,0 +1,19 @@
+{
+	"version": "0.0.1",
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Programm starten",
+			"program": "${workspaceRoot}/src/main.js",
+			"cwd": "${workspaceRoot}",
+			"args": ["--debug", "--force", "--trace-warnings"]
+		},
+		{
+			"type": "node",
+			"request": "attatch",
+			"name": "An den Prozess anfügen",
+			"port": 5858
+		}
+	]
+}

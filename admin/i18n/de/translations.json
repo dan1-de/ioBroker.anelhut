@@ -1,0 +1,15 @@
+{
+    "AdminHeaderDescription": "Fügen Sie hier Ihre Anel Hut-Geräte hinzu. ",
+    "AdminHeaderNotice": "Hinweis:",
+    "AdminHeaderNotice1": "Wenn Sie mehrere Geräte steuern möchten, verwenden Sie bitte einen anderen Empfangsport für das Gerät.",
+    "AdminHeaderNotice2": "Sie können die Ports auf der Weboberfläche des Geräts ändern. ",
+    "AdminHeaderNotice3": "Beispielsweise können Sie Port 77 für das erste Gerät und 78 für das zweite und 79 für das dritte Gerät usw. verwenden.",
+    "AdminHeaderNotice4": "Wenn Sie nur ein Gerät verwenden, können Sie den Standardport 77 verwenden.",
+    "DeviceActive": "Aktiv",
+    "DeviceIP": "Geräte-IP",
+    "DeviceName": "Gerätename",
+    "Devices": "Geräte",
+    "Password": "Passwort",
+    "Username": "Nutzername",
+    "anelhut adapter settings": "Adaptereinstellungen für anelhut"
+}

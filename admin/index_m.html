@@ -1,95 +1,137 @@
 <html>
+	<head>
+		<!-- Load ioBroker scripts and styles-->
+		<link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
+		<link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css" />
 
-<head>
+		<script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
 
-	<!-- Load ioBroker scripts and styles-->
-	<link rel="stylesheet" type="text/css" href="../../css/adapter.css" />
-	<link rel="stylesheet" type="text/css" href="../../lib/css/materialize.css">
+		<script type="text/javascript" src="../../js/translate.js"></script>
+		<script type="text/javascript" src="../../lib/js/materialize.js"></script>
+		<script type="text/javascript" src="../../js/adapter-settings.js"></script>
 
-	<script type="text/javascript" src="../../lib/js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="../../socket.io/socket.io.js"></script>
+		<!-- Load our own files -->
+		<link rel="stylesheet" type="text/css" href="style.css" />
+		<script type="text/javascript" src="words.js"></script>
 
-	<script type="text/javascript" src="../../js/translate.js"></script>
-	<script type="text/javascript" src="../../lib/js/materialize.js"></script>
-	<script type="text/javascript" src="../../js/adapter-settings.js"></script>
+		<script type="text/javascript">
+			// This will be called by the admin adapter when the settings page loads
+			var getAnelDevices = []; // For table "getAnelDevices"
+			function load(settings, onChange) {
+				// example: select elements with id=key and class=value and insert value
+				if (!settings) return;
+				$(".value").each(function () {
+					var $key = $(this);
+					var id = $key.attr("id");
+					if ($key.attr("type") === "checkbox") {
+						// do not call onChange direct, because onChange could expect some arguments
+						$key.prop("checked", settings[id]).on("change", () => onChange());
+					} else {
+						// do not call onChange direct, because onChange could expect some arguments
+						$key.val(settings[id])
+							.on("change", () => onChange())
+							.on("keyup", () => onChange());
+					}
+				});
+				getAnelDevices = settings.getAnelDevices || []; // For table "getAnelDevices"
+				onChange(false);
+				values2table("getAnelDevices", getAnelDevices, onChange); // For table "getAnelDevices"
+				// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
+				if (M) M.updateTextFields();
+			}
 
-	<!-- Load our own files -->
-	<link rel="stylesheet" type="text/css" href="style.css" />
-	<script type="text/javascript" src="words.js"></script>
+			// This will be called by the admin adapter when the user presses the save button
+			function save(callback) {
+				// example: select elements with class=value and build settings object
+				var obj = {};
+				$(".value").each(function () {
+					var $this = $(this);
+					if ($this.attr("type") === "checkbox") {
+						obj[$this.attr("id")] = $this.prop("checked");
+					} else {
+						obj[$this.attr("id")] = $this.val();
+					}
+				});
+				obj.getAnelDevices = table2values("getAnelDevices");
+				callback(obj);
+			}
+		</script>
 
-	<script type="text/javascript">
-		// This will be called by the admin adapter when the settings page loads
-		function load(settings, onChange) {
-			// example: select elements with id=key and class=value and insert value
-			if (!settings) return;
-			$('.value').each(function () {
-				var $key = $(this);
-				var id = $key.attr('id');
-				if ($key.attr('type') === 'checkbox') {
-					// do not call onChange direct, because onChange could expect some arguments
-					$key.prop('checked', settings[id])
-						.on('change', () => onChange())
-						;
-				} else {
-					// do not call onChange direct, because onChange could expect some arguments
-					$key.val(settings[id])
-						.on('change', () => onChange())
-						.on('keyup', () => onChange())
-						;
-				}
-			});
-			onChange(false);
-			// reinitialize all the Materialize labels on the page if you are dynamically adding inputs:
-			if (M) M.updateTextFields();
-		}
+		<style>
+			/* Title of each section */
+			.title {
+				font-weight: bold;
+			}
+			/* Info text of each section */
+			.info {
+				margin-left: 1em;
+			}
+			/* Table header */
+			.table-values th {
+				height: 2em;
+				background-color: #2196f3;
+				font-size: 90%;
+			}
+			/* Table: Add button */
+			.table-button-add {
+				margin: 0.3em 0 1em 0;
+			}
+		</style>
+	</head>
 
-		// This will be called by the admin adapter when the user presses the save button
-		function save(callback) {
-			// example: select elements with class=value and build settings object
-			var obj = {};
-			$('.value').each(function () {
-				var $this = $(this);
-				if ($this.attr('type') === 'checkbox') {
-					obj[$this.attr('id')] = $this.prop('checked');
-				} else if ($this.attr('type') === 'number') {
-					obj[$this.attr('id')] = parseFloat($this.val());
-				} else {
-					obj[$this.attr('id')] = $this.val();
-				}
-			});
-			callback(obj);
-		}
-	</script>
+	<body>
+		<div class="m adapter-container">
+			<div class="row">
+				<div class="col s12 m4 l2">
+					<img src="anelhut.png" class="logo" />
+				</div>
+			</div>
+			<!-- Header Info -->
+			<div>
+				<p class="translate">AdminHeaderDescription</p>
+				</br>
+				<p class="translate">AdminHeaderNotice</p>
+				<p class="translate">AdminHeaderNotice1</p>
+				<p class="translate">AdminHeaderNotice2</p>
+				<p class="translate">AdminHeaderNotice3</p>
+				<p class="translate">AdminHeaderNotice4</p>
+			</div>
 
-</head>
-
-<body>
-
-	<div class="m adapter-container">
-
-		<div class="row">
-			<div class="col s12 m4 l2">
-				<img src="anelhut.png" class="logo">
+			<!-- Table for adding devices -->
+			<div class="row">
+				<div id="tab-getAnelDevices" class="col s12 page">
+					<p class="translate title">Devices</p>
+					<div class="col s12" id="getAnelDevices">
+						<a class="btn-floating waves-effect waves-light blue table-button-add"
+							><i class="material-icons">add</i></a
+						>
+						<div class="table-values-div">
+							<table class="table-values">
+								<thead>
+									<tr>
+										<th class="header translate" data-name="DeviceName">DeviceName</th>
+										<th class="header translate" data-name="DeviceIP">DeviceIP</th>
+										<th class="header translate" data-name="UDPSendPort">
+											UDPSendPort (default: 75)
+										</th>
+										<th class="header translate" data-name="UDPRecievePort">
+											UDPRecievePort (default: 77)
+										</th>
+										<th class="header translate" data-name="Username">Username</th>
+										<th class="header translate" data-name="Password">Password</th>
+										<th class="header translate" data-name="DeviceActive" data-type="checkbox">
+											DeviceActive
+										</th>
+										<th></th>
+										<th class="header" data-buttons="delete up down"></th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-
-		<!-- Put your content here -->
-
-		<!-- For example columns with settings: -->
-		<div class="row">
-			<div class="col s6 input-field">
-				<input type="checkbox" class="value" id="option1" />
-				<label for="option1" class="translate">option1</label>
-			</div>
-
-			<div class="col s6 input-field">
-				<input type="text" class="value" id="option2" />
-				<label for="option2" class="translate">option2</label>
-			</div>
-		</div>
-
-	</div>
-
-</body>
-
+	</body>
 </html>

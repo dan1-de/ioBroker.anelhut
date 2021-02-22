@@ -1,0 +1,15 @@
+{
+    "AdminHeaderDescription": "在此处添加您的Anel Hut设备。",
+    "AdminHeaderNotice": "注意：如果要控制多个小屋设备，请为设备使用其他接收端口。",
+    "AdminHeaderNotice1": "注意：如果要控制多个设备，请为设备使用其他接收端口。",
+    "AdminHeaderNotice2": "您可以在设备的Web界面上更改端口。",
+    "AdminHeaderNotice3": "例如，您可以将端口77用于第一个设备，将78用于第二个设备，将79用于第三个设备，依此类推。",
+    "AdminHeaderNotice4": "您可以在设备的Web界面上更改端口。",
+    "DeviceActive": "积极的",
+    "DeviceIP": "设备IP",
+    "DeviceName": "设备名称",
+    "Devices": "设备",
+    "Password": "密码",
+    "Username": "用户名",
+    "anelhut adapter settings": "anelhut的适配器设置"
+}

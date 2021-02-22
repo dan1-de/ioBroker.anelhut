@@ -1,0 +1,15 @@
+{
+    "AdminHeaderDescription": "Add your Anel Hut devices here.",
+    "AdminHeaderNotice": "Note:",
+    "AdminHeaderNotice1": "If you want to controll multiple devices, please use a different recieve port for each device.",
+    "AdminHeaderNotice2": "For example you can use port 77 for the first device and 78 for the second and 79 for the third and so on.",
+    "AdminHeaderNotice3": "If you only use one device, you can use the default port 77.",
+    "AdminHeaderNotice4": "You can change the ports on the webinterface of the device.",
+    "DeviceActive": "Active",
+    "DeviceIP": "Device IP",
+    "DeviceName": "Device Name",
+    "Devices": "Devices",
+    "Password": "Password",
+    "Username": "Username",
+    "anelhut adapter settings": "Adapter settings for anelhut"
+}

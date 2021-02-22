@@ -1,0 +1,15 @@
+{
+    "AdminHeaderDescription": "Ajoutez vos appareils Anel Hut ici. ",
+    "AdminHeaderNotice": "Remarque: si vous souhaitez contrôler plusieurs appareils Hut, veuillez utiliser un port de réception différent pour l'appareil. ",
+    "AdminHeaderNotice1": "Remarque: si vous souhaitez contrôler plusieurs appareils, veuillez utiliser un port de réception différent pour l'appareil.",
+    "AdminHeaderNotice2": "Vous pouvez modifier les ports sur l'interface Web de l'appareil. ",
+    "AdminHeaderNotice3": "Par exemple, vous pouvez utiliser le port 77 pour le premier appareil et 78 pour le deuxième et 79 pour le troisième et ainsi de suite.",
+    "AdminHeaderNotice4": "Vous pouvez modifier les ports sur l'interface Web de l'appareil. ",
+    "DeviceActive": "actif",
+    "DeviceIP": "IP de l'appareil",
+    "DeviceName": "Nom de l'appareil",
+    "Devices": "Dispositifs",
+    "Password": "Mot de passe",
+    "Username": "Nom d'utilisateur",
+    "anelhut adapter settings": "Paramètres d'adaptateur pour anelhut"
+}

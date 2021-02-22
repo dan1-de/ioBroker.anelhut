@@ -1,0 +1,15 @@
+{
+    "AdminHeaderDescription": "Aggiungi qui i tuoi dispositivi Anel Hut. ",
+    "AdminHeaderNotice": "Nota: se desideri controllare più dispositivi hut, utilizza una porta di ricezione diversa per il dispositivo. ",
+    "AdminHeaderNotice1": "Nota: se si desidera controllare più dispositivi, utilizzare una porta di ricezione diversa per il dispositivo.",
+    "AdminHeaderNotice2": "È possibile modificare le porte sull'interfaccia web del dispositivo. ",
+    "AdminHeaderNotice3": "Ad esempio è possibile utilizzare la porta 77 per il primo dispositivo e 78 per il secondo e 79 per il terzo e così via.",
+    "AdminHeaderNotice4": "È possibile modificare le porte sull'interfaccia web del dispositivo. ",
+    "DeviceActive": "Attivo",
+    "DeviceIP": "IP del dispositivo",
+    "DeviceName": "Nome del dispositivo",
+    "Devices": "dispositivi",
+    "Password": "Parola d'ordine",
+    "Username": "Nome utente",
+    "anelhut adapter settings": "Impostazioni dell'adattatore per anelhut"
+}

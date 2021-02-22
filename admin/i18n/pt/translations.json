@@ -1,0 +1,15 @@
+{
+    "AdminHeaderDescription": "Adicione seus dispositivos Anel Hut aqui. ",
+    "AdminHeaderNotice": "Nota: Se você quiser controlar vários dispositivos de cabana, use uma porta de recepção diferente para o dispositivo. ",
+    "AdminHeaderNotice1": "Nota: Se você quiser controlar vários dispositivos, use uma porta de recepção diferente para o dispositivo.",
+    "AdminHeaderNotice2": "Você pode alterar as portas na interface da web do dispositivo. ",
+    "AdminHeaderNotice3": "Por exemplo, você pode usar a porta 77 para o primeiro dispositivo e 78 para o segundo e 79 para o terceiro e assim por diante.",
+    "AdminHeaderNotice4": "Você pode alterar as portas na interface da web do dispositivo. ",
+    "DeviceActive": "Ativo",
+    "DeviceIP": "IP do dispositivo",
+    "DeviceName": "Nome do dispositivo",
+    "Devices": "Dispositivos",
+    "Password": "Senha",
+    "Username": "Nome de usuário",
+    "anelhut adapter settings": "Configurações do adaptador para anelhut"
+}
