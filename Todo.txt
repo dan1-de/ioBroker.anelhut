@@ -1,10 +1,4 @@
-- Translation: 
-    - Admin Interface
 - Test: 
     - Write Tests
 - Passwords:
     Encrypt and decrypt password in config
-
-- Adapter Status Admin UI: 
-    - https://herwig.de/anleitungen/smarthome/iobroker/adapter-entwicklung-faq.html#adapter-startet-sich-selbst-neu
-

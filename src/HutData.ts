@@ -28,6 +28,7 @@ export class HutData {
 
 	Relais!: Array<Relais>;
 	IO!: Array<IOState>;
+	LastUpdate!: string;
 }
 
 export class Relais {

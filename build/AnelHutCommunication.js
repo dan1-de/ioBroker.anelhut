@@ -27,6 +27,7 @@ class AnelHutCommunication {
             if (remote.address == this.hostIpAdress) {
                 const Hutdata = this.DecodeMessage(message);
                 if (Hutdata != undefined && Hutdata.IP != undefined && Hutdata.IP == this.hostIpAdress) {
+                    Hutdata.LastUpdate = new Date().toLocaleString();
                     this.HutStatusObservable.next(Hutdata);
                 }
             }
