@@ -32,6 +32,10 @@ class AnelHutCommunication {
                 }
             }
         });
+        this.socket.on("error", (err) => {
+            this.logger.error(`UDP Server Error: ${err.stack}`);
+            this.socket.close();
+        });
     }
     static keyCharAt(key, i) {
         return key.charCodeAt(Math.floor(i % key.length));
