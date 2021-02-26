@@ -1,79 +1,72 @@
 {
-    "common": {
-        "name": "anelhut",
-        "version": "1.0.0",
-        "news": {
-            "1.0.0": {
-                "en": "initial release",
-                "de": "Erstveröffentlichung",
-                "ru": "Начальная версия",
-                "pt": "lançamento inicial",
-                "nl": "Eerste uitgave",
-                "fr": "Première version",
-                "it": "Versione iniziale",
-                "es": "Versión inicial",
-                "pl": "Pierwsze wydanie",
-                "zh-cn": "首次出版"
-            }
-        },
-        "title": "Anel Hut",
-        "titleLang": {
-            "en": "Anel Hut",
-            "de": "Anel Hut",
-            "ru": "Анель Хат",
-            "pt": "Cabana Anel",
-            "nl": "Anel Hut",
-            "fr": "Cabane Anel",
-            "it": "Anel Hut",
-            "es": "Anel Hut",
-            "pl": "Anel Hut",
-            "zh-cn": "阿内尔小屋"
-        },
-        "desc": {
-            "en": "Adapter for the NET-PwrCrtl Hut of ANEL Electronic AG",
-            "de": "Adapter für die NET-PwrCrtl Hut der ANEL Electronic AG",
-            "ru": "Адаптер для NET-PwrCrtl Hut от ANEL Electronic AG",
-            "pt": "Adaptador para Cabana NET-PwrCrtl da ANEL Electronic AG",
-            "nl": "Adapter voor de NET-PwrCrtl Hut van ANEL Electronic AG",
-            "fr": "Adaptateur pour la cabane NET-PwrCrtl de ANEL Electronic AG",
-            "it": "Adattatore per il rifugio NET-PwrCrtl di ANEL Electronic AG",
-            "es": "Adaptador para el NET-PwrCrtl Hut de ANEL Electronic AG",
-            "pl": "Adapter do Hut NET-PwrCrtl firmy ANEL Electronic AG",
-            "zh-cn": "ANEL Electronic AG的NET-PwrCrtl小屋适配器"
-        },
-        "authors": [
-            "dan1-de <dan1-de@gmx.de>"
-        ],
-        "keywords": [
-            "Anel",
-            "Hut",
-            "NetCtrl",
-            "PowerHut"
-        ],
-        "license": "MIT",
-        "platform": "Javascript/Node.js",
-        "main": "build/main.js",
-        "icon": "anelhut.png",
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/dan1-de/ioBroker.anelhut/master/admin/anelhut.png",
-        "readme": "https://github.com/dan1-de/ioBroker.anelhut/blob/master/README.md",
-        "loglevel": "info",
-        "mode": "daemon",
-        "type": "iot-systems",
-        "compact": true,
-        "connectionType": "local",
-        "dataSource": "poll",
-        "materialize": true,
-        "dependencies": [
-            {
-                "js-controller": ">=2.0.0"
-            }
-        ]
-    },
-    "native": {
-        "option1": true,
-        "option2": "42"
-    },
-    "objects": [],
-    "instanceObjects": []
+	"common": {
+		"name": "anelhut",
+		"version": "1.0.1",
+		"news": {
+			"1.0.0": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung",
+				"ru": "Начальная версия",
+				"pt": "lançamento inicial",
+				"nl": "Eerste uitgave",
+				"fr": "Première version",
+				"it": "Versione iniziale",
+				"es": "Versión inicial",
+				"pl": "Pierwsze wydanie",
+				"zh-cn": "首次出版"
+			}
+		},
+		"title": "Anel Hut",
+		"titleLang": {
+			"en": "Anel Hut",
+			"de": "Anel Hut",
+			"ru": "Анель Хат",
+			"pt": "Cabana Anel",
+			"nl": "Anel Hut",
+			"fr": "Cabane Anel",
+			"it": "Anel Hut",
+			"es": "Anel Hut",
+			"pl": "Anel Hut",
+			"zh-cn": "阿内尔小屋"
+		},
+		"desc": {
+			"en": "Adapter for the NET-PwrCrtl Hut of ANEL Electronic AG",
+			"de": "Adapter für die NET-PwrCrtl Hut der ANEL Electronic AG",
+			"ru": "Адаптер для NET-PwrCrtl Hut от ANEL Electronic AG",
+			"pt": "Adaptador para Cabana NET-PwrCrtl da ANEL Electronic AG",
+			"nl": "Adapter voor de NET-PwrCrtl Hut van ANEL Electronic AG",
+			"fr": "Adaptateur pour la cabane NET-PwrCrtl de ANEL Electronic AG",
+			"it": "Adattatore per il rifugio NET-PwrCrtl di ANEL Electronic AG",
+			"es": "Adaptador para el NET-PwrCrtl Hut de ANEL Electronic AG",
+			"pl": "Adapter do Hut NET-PwrCrtl firmy ANEL Electronic AG",
+			"zh-cn": "ANEL Electronic AG的NET-PwrCrtl小屋适配器"
+		},
+		"authors": ["dan1-de <dan1-de@gmx.de>"],
+		"keywords": ["Anel", "Hut", "NetCtrl", "PowerHut"],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "build/main.js",
+		"icon": "anelhut.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/dan1-de/ioBroker.anelhut/master/admin/anelhut.png",
+		"readme": "https://github.com/dan1-de/ioBroker.anelhut/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "iot-systems",
+		"compact": true,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"materialize": true,
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": []
 }
