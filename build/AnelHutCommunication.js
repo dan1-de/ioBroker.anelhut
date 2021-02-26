@@ -16,7 +16,8 @@ class AnelHutCommunication {
         this.logger = logger;
         this.socket.bind(udpRecievePort);
         this.socket.on("listening", () => {
-            const broadcastAddress = "192.168.178.255";
+            // const broadcastAddress = "192.168.178.255";
+            const broadcastAddress = "255.255.255.255";
             const data = Buffer.from("wer da?");
             this.socket.setBroadcast(true);
             this.socket.setMulticastTTL(128);
