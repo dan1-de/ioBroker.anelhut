@@ -82,6 +82,8 @@ class Anelhut extends utils.Adapter {
 				await this.setDeviceProperties(deviceName, "Status", "boolean", relais.Status, "switch");
 				this.subscribeStates(deviceName + "." + "Status");
 			});
+
+			await this.setDeviceProperties(device.DeviceName, "LastUpdate", "string", hutData.LastUpdate);
 		}
 
 		// io part:
@@ -120,9 +122,6 @@ class Anelhut extends utils.Adapter {
 		await this.setDeviceProperties(device.DeviceName, "DeviceIP", "string", device.DeviceIP);
 		await this.setDeviceProperties(device.DeviceName, "UDPSendPort", "string", device.UDPSendPort);
 		await this.setDeviceProperties(device.DeviceName, "UDPRecievePort", "string", device.UDPRecievePort);
-		await this.setDeviceProperties(device.DeviceName, "DeviceActive", "boolean", device.DeviceActive);
-		await this.setDeviceProperties(device.DeviceName, "DeviceConnected", "boolean", device.DeviceConnected);
-		await this.setDeviceProperties(device.DeviceName, "LastUpdateTimestamp", "string", device.LastUpdateTimestamp);
 
 		await this.UpdateHutData(device, new HutData());
 
@@ -189,20 +188,17 @@ class Anelhut extends utils.Adapter {
 		this.log.info("Adapter anelhut starting...");
 
 		this.anelConfigDevices = this.config.getAnelDevices;
-		if (this.anelConfigDevices == undefined) {
+		if (this.anelConfigDevices == undefined || this.anelConfigDevices.length <= 0) {
 			this.log.error("No devices defined. Please edit configuration");
+			//update adapter status
+			this.setState("info.connection", false, true);
 			return;
 		}
-		this.log.info("Found: " + this.anelConfigDevices.length + " devices in configuration");
 
-		//filter disabled devices
+		this.log.info("Found: " + this.anelConfigDevices.length + " devices in configuration");
 		this.anelConfigDevices.forEach(async (d) => {
-			this.log.info(
-				"Found device in config:  " + d.DeviceName + " | " + d.DeviceIP + " enabled: " + d.DeviceActive,
-			);
-			if (d.DeviceActive) {
-				await this.initializeDevice(d);
-			}
+			this.log.info("Found device in config:  " + d.DeviceName + " | " + d.DeviceIP);
+			await this.initializeDevice(d);
 		});
 
 		this.log.info("Adapter anelhut initialized");
@@ -301,7 +297,7 @@ class Anelhut extends utils.Adapter {
 
 		if (type == "relais" && status == "Status") {
 			this.anelConfigDevices.forEach((device) => {
-				if (device.DeviceName == hutName && device.DeviceActive) {
+				if (device.DeviceName == hutName) {
 					device.HutCommunication.Switch(relaisNumber, state, false);
 				}
 			});

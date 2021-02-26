@@ -16,7 +16,8 @@ class AnelHutCommunication {
         this.logger = logger;
         this.socket.bind(udpRecievePort);
         this.socket.on("listening", () => {
-            const broadcastAddress = "192.168.178.255";
+            // const broadcastAddress = "192.168.178.255";
+            const broadcastAddress = "255.255.255.255";
             const data = Buffer.from("wer da?");
             this.socket.setBroadcast(true);
             this.socket.setMulticastTTL(128);
@@ -27,9 +28,14 @@ class AnelHutCommunication {
             if (remote.address == this.hostIpAdress) {
                 const Hutdata = this.DecodeMessage(message);
                 if (Hutdata != undefined && Hutdata.IP != undefined && Hutdata.IP == this.hostIpAdress) {
+                    Hutdata.LastUpdate = new Date().toLocaleString();
                     this.HutStatusObservable.next(Hutdata);
                 }
             }
+        });
+        this.socket.on("error", (err) => {
+            this.logger.error(`UDP Server Error: ${err.stack}`);
+            this.socket.close();
         });
     }
     static keyCharAt(key, i) {
