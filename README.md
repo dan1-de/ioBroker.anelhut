@@ -47,6 +47,10 @@ Please report any issues.
 
 ## Changelog
 
+### 1.0.3
+
+-   (dan1-de) Improvements: logging, udp broadcast adress, configuration
+
 ### 1.0.0
 
 -   (dan1-de) initial release
