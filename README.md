@@ -32,12 +32,13 @@ Adapter for the NET-PwrCrtl Hut of ANEL Electronic AG
         -   DeviceName: Custom Name of your device. This name is used to display the device in the objects list. Example: anelhut.0.DeviceName
         -   DeviceIP: IP Adress of your device (please use no hostname)
         -   UDPSendPort: Insert the port which is shown in the webinterface of your Anel device. This is the recieve port from the view of the anel device.
-        -   UDPRecievePort: Insert the port which is shwon in webinterface of your Anel device. This is the send port from the view of the anel device.
+        -   UDPRecievePort: Insert the port which is shown in webinterface of your Anel device. This is the send port from the view of the anel device.
 
-        Important Node: If you want to controll multiple devices, please use a different recieve port for each device
-        For example you can use port 77 for the first device and 78 for the second and 79 for the third and so on
-        If you only use one device, you can use the default port 77
-        You can change the ports on the webinterface of the device
+        Important note: If you want to controll multiple devices, please use a different recieve port for each device.
+        For example you can use port 77 for the first device and 78 for the second and 79 for the third and so on.
+        If you only use one device, you can use the default port 77.
+        For the send port the default port 75 can be used for all devices.
+        You can change the ports on the webinterface of the device.
 
 ## Note
 
