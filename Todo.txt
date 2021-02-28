@@ -1,6 +1,4 @@
 - Test: 
     - Write Tests
 - Passwords:
-    Encrypt and decrypt password in config
-
-- Status Update: green point!!!
+    - Encrypt and decrypt password in config
