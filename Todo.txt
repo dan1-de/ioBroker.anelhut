@@ -2,3 +2,5 @@
     - Write Tests
 - Passwords:
     - Encrypt and decrypt password in config
+    
+- Temperature not working
