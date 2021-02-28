@@ -27,7 +27,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // you need to create an adapter
 const utils = __importStar(require("@iobroker/adapter-core"));
 const AnelHutCommunication_1 = require("./AnelHutCommunication");
-const HutData_1 = require("./HutData");
 // Load your modules here, e.g.:
 // import * as fs from "fs";
 class Anelhut extends utils.Adapter {
@@ -43,29 +42,68 @@ class Anelhut extends utils.Adapter {
         this.on("unload", this.onUnload.bind(this));
     }
     async UpdateHutData(device, hutData) {
-        await this.setDeviceProperties(device.DeviceName, "DeviceType", "string", hutData.DeviceType);
-        await this.setDeviceProperties(device.DeviceName, "DeviceName", "string", hutData.DeviceName);
-        await this.setDeviceProperties(device.DeviceName, "Netmask", "string", hutData.Netmask);
-        await this.setDeviceProperties(device.DeviceName, "Gateway", "string", hutData.Gateway);
-        await this.setDeviceProperties(device.DeviceName, "MacAdress", "string", hutData.MacAdress);
-        await this.setDeviceProperties(device.DeviceName, "Blocked", "number", hutData.Blocked);
-        await this.setDeviceProperties(device.DeviceName, "HttpPort", "number", hutData.HttpPort);
-        await this.setDeviceProperties(device.DeviceName, "Temperature", "number", hutData.Temperature);
-        await this.setDeviceProperties(device.DeviceName, "Type", "string", hutData.Type);
-        await this.setDeviceProperties(device.DeviceName, "XOR_USER_Password", "boolean", hutData.XOR_USER_Password);
-        await this.setDeviceProperties(device.DeviceName, "Firmware", "string", hutData.Firmware);
-        await this.setDeviceProperties(device.DeviceName, "PowerMeasurement", "boolean", hutData.PowerMeasurement);
-        await this.setDeviceProperties(device.DeviceName, "VoltageRMS", "number", hutData.VoltageRMS);
-        await this.setDeviceProperties(device.DeviceName, "CurrentRMS", "number", hutData.CurrentRMS);
-        await this.setDeviceProperties(device.DeviceName, "LineFrequency", "number", hutData.LineFrequency);
-        await this.setDeviceProperties(device.DeviceName, "ActivePower", "number", hutData.ActivePower);
-        await this.setDeviceProperties(device.DeviceName, "ApparentPower", "number", hutData.ApparentPower);
-        await this.setDeviceProperties(device.DeviceName, "ReactivePower", "number", hutData.ReactivePower);
-        await this.setDeviceProperties(device.DeviceName, "PowerFactor", "number", hutData.PowerFactor);
-        await this.setDeviceProperties(device.DeviceName, "Sensor_1_Ready", "boolean", hutData.Sensor_1_Ready);
-        await this.setDeviceProperties(device.DeviceName, "Sensor_1_Temperature", "number", hutData.Sensor_1_Temperature);
-        await this.setDeviceProperties(device.DeviceName, "Sensor_1_Humidity", "number", hutData.Sensor_1_Humidity);
-        await this.setDeviceProperties(device.DeviceName, "Sensor_1_Brightness", "number", hutData.Sensor_1_Brightness);
+        // general
+        const generalPath = device.DeviceName + "." + "general";
+        await this.setObjectNotExistsAsync(generalPath, {
+            type: "device",
+            common: {
+                name: "general",
+            },
+            native: {},
+        });
+        await this.setDeviceProperties(generalPath, "DeviceType", "string", hutData.DeviceType);
+        await this.setDeviceProperties(generalPath, "DeviceName", "string", hutData.DeviceName);
+        await this.setDeviceProperties(generalPath, "Blocked", "number", hutData.Blocked);
+        await this.setDeviceProperties(generalPath, "Temperature", "number", hutData.Temperature);
+        await this.setDeviceProperties(generalPath, "Type", "string", hutData.Type);
+        await this.setDeviceProperties(generalPath, "XOR_USER_Password", "boolean", hutData.XOR_USER_Password);
+        await this.setDeviceProperties(generalPath, "Firmware", "string", hutData.Firmware);
+        //network
+        const networkPath = device.DeviceName + "." + "network";
+        await this.setObjectNotExistsAsync(networkPath, {
+            type: "device",
+            common: {
+                name: "network",
+            },
+            native: {},
+        });
+        await this.setDeviceProperties(networkPath, "DeviceIP", "string", device.DeviceIP);
+        await this.setDeviceProperties(networkPath, "MacAdress", "string", hutData.MacAdress);
+        await this.setDeviceProperties(networkPath, "UDPSendPort", "string", device.UDPSendPort);
+        await this.setDeviceProperties(networkPath, "UDPRecievePort", "string", device.UDPRecievePort);
+        await this.setDeviceProperties(networkPath, "HttpPort", "number", hutData.HttpPort);
+        await this.setDeviceProperties(networkPath, "Netmask", "string", hutData.Netmask);
+        await this.setDeviceProperties(networkPath, "Gateway", "string", hutData.Gateway);
+        //power
+        const powerPath = device.DeviceName + "." + "power";
+        await this.setObjectNotExistsAsync(powerPath, {
+            type: "device",
+            common: {
+                name: "power",
+            },
+            native: {},
+        });
+        await this.setDeviceProperties(powerPath, "PowerMeasurement", "boolean", hutData.PowerMeasurement);
+        await this.setDeviceProperties(powerPath, "VoltageRMS", "number", hutData.VoltageRMS);
+        await this.setDeviceProperties(powerPath, "CurrentRMS", "number", hutData.CurrentRMS);
+        await this.setDeviceProperties(powerPath, "LineFrequency", "number", hutData.LineFrequency);
+        await this.setDeviceProperties(powerPath, "ActivePower", "number", hutData.ActivePower);
+        await this.setDeviceProperties(powerPath, "ApparentPower", "number", hutData.ApparentPower);
+        await this.setDeviceProperties(powerPath, "ReactivePower", "number", hutData.ReactivePower);
+        await this.setDeviceProperties(powerPath, "PowerFactor", "number", hutData.PowerFactor);
+        //sensor
+        const sensorPath = device.DeviceName + "." + "sensor";
+        await this.setObjectNotExistsAsync(sensorPath, {
+            type: "device",
+            common: {
+                name: "sensor",
+            },
+            native: {},
+        });
+        await this.setDeviceProperties(sensorPath, "Sensor_1_Ready", "boolean", hutData.Sensor_1_Ready);
+        await this.setDeviceProperties(sensorPath, "Sensor_1_Temperature", "number", hutData.Sensor_1_Temperature);
+        await this.setDeviceProperties(sensorPath, "Sensor_1_Humidity", "number", hutData.Sensor_1_Humidity);
+        await this.setDeviceProperties(sensorPath, "Sensor_1_Brightness", "number", hutData.Sensor_1_Brightness);
         // relais part:
         if (hutData.Relais != undefined && hutData.Relais.length > 0) {
             await this.setObjectNotExistsAsync(device.DeviceName + "." + "relais", {
@@ -88,6 +126,7 @@ class Anelhut extends utils.Adapter {
                 await this.setDeviceProperties(deviceName, "Status", "boolean", relais.Status, "switch");
                 this.subscribeStates(deviceName + "." + "Status");
             });
+            await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", true);
             await this.setDeviceProperties(device.DeviceName, "LastUpdate", "string", hutData.LastUpdate);
         }
         // io part:
@@ -122,17 +161,8 @@ class Anelhut extends utils.Adapter {
             },
             native: {},
         });
-        await this.setDeviceProperties(device.DeviceName, "DeviceIP", "string", device.DeviceIP);
-        await this.setDeviceProperties(device.DeviceName, "UDPSendPort", "string", device.UDPSendPort);
-        await this.setDeviceProperties(device.DeviceName, "UDPRecievePort", "string", device.UDPRecievePort);
-        await this.UpdateHutData(device, new HutData_1.HutData());
-        // const anelCom = new AnelHutCommunication(
-        // 	device.DeviceIP,
-        // 	Number(device.UDPRecievePort),
-        // 	Number(device.UDPSendPort),
-        // 	device.Username,
-        // 	device.Password,
-        // );
+        await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", false);
+        // await this.UpdateHutData(device, new HutData());
         // add link to communication
         device.HutCommunication = new AnelHutCommunication_1.AnelHutCommunication(device.DeviceIP, Number(device.UDPRecievePort), Number(device.UDPSendPort), device.Username, device.Password, this.log);
         device.HutCommunication.SubscribeStatusUpdates().subscribe((hutData) => {

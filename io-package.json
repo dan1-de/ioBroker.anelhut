@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "anelhut",
-		"version": "1.0.3",
+		"version": "1.0.4",
 		"news": {
 			"1.0.0": {
 				"en": "initial release",
@@ -30,14 +30,14 @@
 			"zh-cn": "阿内尔小屋"
 		},
 		"desc": {
-			"en": "Adapter for the NET-PwrCrtl Hut of ANEL Electronic AG",
-			"de": "Adapter für die NET-PwrCrtl Hut der ANEL Electronic AG",
-			"ru": "Адаптер для NET-PwrCrtl Hut от ANEL Electronic AG",
+			"en": "Adapter for the NET-PwrCrtl devices of ANEL Electronic AG",
+			"de": "Adapter für die NET-PwrCrtl devices der ANEL Electronic AG",
+			"ru": "Адаптер для NET-PwrCrtl devices от ANEL Electronic AG",
 			"pt": "Adaptador para Cabana NET-PwrCrtl da ANEL Electronic AG",
-			"nl": "Adapter voor de NET-PwrCrtl Hut van ANEL Electronic AG",
+			"nl": "Adapter voor de NET-PwrCrtl devices van ANEL Electronic AG",
 			"fr": "Adaptateur pour la cabane NET-PwrCrtl de ANEL Electronic AG",
 			"it": "Adattatore per il rifugio NET-PwrCrtl di ANEL Electronic AG",
-			"es": "Adaptador para el NET-PwrCrtl Hut de ANEL Electronic AG",
+			"es": "Adaptador para el NET-PwrCrtl devices de ANEL Electronic AG",
 			"pl": "Adapter do Hut NET-PwrCrtl firmy ANEL Electronic AG",
 			"zh-cn": "ANEL Electronic AG的NET-PwrCrtl小屋适配器"
 		},
