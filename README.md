@@ -15,7 +15,8 @@
 
 ## anelhut adapter for ioBroker
 
-Adapter for the NET-PwrCrtl Hut of ANEL Electronic AG
+Adapter for the NET-PwrCrtl devices of ANEL Electronic AG
+Manufacturer: https://shop.anel.eu/
 
 ## Usage
 
