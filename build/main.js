@@ -27,7 +27,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // you need to create an adapter
 const utils = __importStar(require("@iobroker/adapter-core"));
 const AnelHutCommunication_1 = require("./AnelHutCommunication");
-const HutData_1 = require("./HutData");
 // Load your modules here, e.g.:
 // import * as fs from "fs";
 class Anelhut extends utils.Adapter {
@@ -127,6 +126,7 @@ class Anelhut extends utils.Adapter {
                 await this.setDeviceProperties(deviceName, "Status", "boolean", relais.Status, "switch");
                 this.subscribeStates(deviceName + "." + "Status");
             });
+            await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", true);
             await this.setDeviceProperties(device.DeviceName, "LastUpdate", "string", hutData.LastUpdate);
         }
         // io part:
@@ -162,7 +162,7 @@ class Anelhut extends utils.Adapter {
             native: {},
         });
         await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", false);
-        await this.UpdateHutData(device, new HutData_1.HutData());
+        // await this.UpdateHutData(device, new HutData());
         // add link to communication
         device.HutCommunication = new AnelHutCommunication_1.AnelHutCommunication(device.DeviceIP, Number(device.UDPRecievePort), Number(device.UDPSendPort), device.Username, device.Password, this.log);
         device.HutCommunication.SubscribeStatusUpdates().subscribe((hutData) => {

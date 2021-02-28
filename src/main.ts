@@ -117,6 +117,7 @@ class Anelhut extends utils.Adapter {
 				this.subscribeStates(deviceName + "." + "Status");
 			});
 
+			await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", true);
 			await this.setDeviceProperties(device.DeviceName, "LastUpdate", "string", hutData.LastUpdate);
 		}
 
@@ -156,7 +157,7 @@ class Anelhut extends utils.Adapter {
 
 		await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", false);
 
-		await this.UpdateHutData(device, new HutData());
+		// await this.UpdateHutData(device, new HutData());
 
 		// add link to communication
 		device.HutCommunication = new AnelHutCommunication(
