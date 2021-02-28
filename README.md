@@ -48,6 +48,10 @@ Please report any issues.
 
 ## Changelog
 
+### 1.0.4
+
+-   (dan1-de) New Icon; Improved object structure
+
 ### 1.0.3
 
 -   (dan1-de) Improvements: logging, udp broadcast adress, configuration
