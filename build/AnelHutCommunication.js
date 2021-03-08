@@ -128,6 +128,14 @@ class AnelHutCommunication {
         });
         return result;
     }
+    GetRelaisList(messageParts, relaisCount) {
+        const RelaisList = new Array();
+        for (let i = 0; i < relaisCount; i++) {
+            const name_split = messageParts[6 + i].split(",");
+            RelaisList.push(new HutData_1.Relais(i + 1, name_split[0], Number(name_split[1])));
+        }
+        return RelaisList;
+    }
     DecodeMessage(message) {
         const hutData = new HutData_1.HutData();
         if (message == undefined || message == "") {
@@ -154,12 +162,7 @@ class AnelHutCommunication {
         hutData.Gateway = messageParts[4];
         hutData.MacAdress = AnelHutCommunication.ConvertMacNumbersToHexString(messageParts[5]);
         // Relais
-        const RelaisList = new Array();
-        for (let i = 0; i < 8; i++) {
-            const name_split = messageParts[6 + i].split(",");
-            RelaisList.push(new HutData_1.Relais(i + 1, name_split[0], Number(name_split[1])));
-        }
-        hutData.Relais = RelaisList;
+        hutData.Relais = this.GetRelaisList(messageParts, 8);
         hutData.Blocked = Number(messageParts[14]);
         hutData.HttpPort = Number(messageParts[15]);
         hutData.Temperature = -127; // ??
@@ -188,7 +191,7 @@ class AnelHutCommunication {
             }
             hutData.IO = IOList;
             const temp = messageParts[24].substr(0, messageParts[24].length - 2);
-            hutData.Temperature = Number(temp.replace(".", ","));
+            hutData.Temperature = Number(temp);
             hutData.Firmware = messageParts[25];
             //since FW 6.0
             if (messageParts.length > 26) {
@@ -196,26 +199,61 @@ class AnelHutCommunication {
                 //--------------------------------------------------------------------------------
                 //Typ { a = ADV; i = IO; h = HUT; o = ONE; f = ONE-F; H = Home; P = PRO}
                 //--------------------------------------------------------------------------------
+                //give type a name here:
+                switch (hutData.Type) {
+                    case "a":
+                        hutData.Type = "ADV";
+                        hutData.IO = new Array(); // no IO
+                        break;
+                    case "i":
+                        hutData.Type = "IO";
+                        break;
+                    case "h":
+                        hutData.Type = "HUT";
+                        break;
+                    case "o":
+                        hutData.Type = "ONE";
+                        hutData.IO = new Array(); // no IO
+                        break;
+                    case "f":
+                        hutData.Type = "ONE-F";
+                        hutData.IO = new Array(); // no IO
+                        break;
+                    case "H":
+                        hutData.Type = "Home";
+                        this.logger.info("HOME: initialize only 3 relais");
+                        // home -> support only 3 relais -> initialize relais of home again
+                        hutData.Relais = this.GetRelaisList(messageParts, 3);
+                        hutData.IO = new Array(); // no IO
+                        break;
+                    case "P":
+                        hutData.Type = "PRO";
+                        hutData.IO = new Array(); // no IO
+                        break;
+                    default:
+                        hutData.Type = "unknown";
+                        break;
+                }
                 //Power
                 hutData.PowerMeasurement = false;
                 if (messageParts[27] == "p") {
                     const start = 28;
-                    hutData.VoltageRMS = Number(messageParts[start].replace(".", ","));
-                    hutData.CurrentRMS = Number(messageParts[start + 1].replace(".", ","));
-                    hutData.LineFrequency = Number(messageParts[start + 2].replace(".", ","));
-                    hutData.ActivePower = Number(messageParts[start + 3].replace(".", ","));
-                    hutData.ApparentPower = Number(messageParts[start + 4].replace(".", ","));
-                    hutData.ReactivePower = Number(messageParts[start + 5].replace(".", ","));
-                    hutData.PowerFactor = Number(messageParts[start + 6].replace(".", ","));
+                    hutData.VoltageRMS = Number(messageParts[start]);
+                    hutData.CurrentRMS = Number(messageParts[start + 1]);
+                    hutData.LineFrequency = Number(messageParts[start + 2]);
+                    hutData.ActivePower = Number(messageParts[start + 3]);
+                    hutData.ApparentPower = Number(messageParts[start + 4]);
+                    hutData.ReactivePower = Number(messageParts[start + 5]);
+                    hutData.PowerFactor = Number(messageParts[start + 6]);
                     hutData.PowerMeasurement = true;
                 }
                 //Sensor 1
                 hutData.Sensor_1_Ready = false;
                 if (messageParts[messageParts.length - 6] == "s") {
                     hutData.Sensor_1_Ready = true;
-                    hutData.Sensor_1_Temperature = Number(messageParts[messageParts.length - 5].replace(".", ","));
-                    hutData.Sensor_1_Humidity = Number(messageParts[messageParts.length - 4].replace(".", ","));
-                    hutData.Sensor_1_Brightness = Number(messageParts[messageParts.length - 3].replace(".", ","));
+                    hutData.Sensor_1_Temperature = Number(messageParts[messageParts.length - 5]);
+                    hutData.Sensor_1_Humidity = Number(messageParts[messageParts.length - 4]);
+                    hutData.Sensor_1_Brightness = Number(messageParts[messageParts.length - 3]);
                 }
                 hutData.XOR_USER_Password = false;
                 if (messageParts[messageParts.length - 2] == "xor") {
