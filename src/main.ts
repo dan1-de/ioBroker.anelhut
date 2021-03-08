@@ -37,6 +37,7 @@ class Anelhut extends utils.Adapter {
 			native: {},
 		});
 		await this.setDeviceProperties(generalPath, "DeviceType", "string", hutData.DeviceType);
+		await this.setDeviceProperties(generalPath, "DeviceTypeDetail", "string", hutData.Type);
 		await this.setDeviceProperties(generalPath, "DeviceName", "string", hutData.DeviceName);
 		await this.setDeviceProperties(generalPath, "Blocked", "number", hutData.Blocked);
 		await this.setDeviceProperties(generalPath, "Temperature", "number", hutData.Temperature);
