@@ -3,7 +3,8 @@
 - Passwords:
     - Encrypt and decrypt password in config
     
-- Sensor: 
-    Temperature not working
-- Home: 
-    - display only 3 relais
+- Send Password xor decrypted over udp
+
+
+- Release:
+    Move to iobroker adapter repository

@@ -163,6 +163,15 @@ export class AnelHutCommunication {
 		return result;
 	}
 
+	private GetRelaisList(messageParts: Array<string>, relaisCount: number): Array<Relais> {
+		const RelaisList: Array<Relais> = new Array<Relais>();
+		for (let i = 0; i < relaisCount; i++) {
+			const name_split = messageParts[6 + i].split(",");
+			RelaisList.push(new Relais(i + 1, name_split[0], Number(name_split[1])));
+		}
+		return RelaisList;
+	}
+
 	private DecodeMessage(message: string): HutData {
 		const hutData = new HutData();
 		if (message == undefined || message == "") {
@@ -194,12 +203,7 @@ export class AnelHutCommunication {
 		hutData.MacAdress = AnelHutCommunication.ConvertMacNumbersToHexString(messageParts[5]);
 
 		// Relais
-		const RelaisList: Array<Relais> = new Array<Relais>();
-		for (let i = 0; i < 8; i++) {
-			const name_split = messageParts[6 + i].split(",");
-			RelaisList.push(new Relais(i + 1, name_split[0], Number(name_split[1])));
-		}
-		hutData.Relais = RelaisList;
+		hutData.Relais = this.GetRelaisList(messageParts, 8);
 
 		hutData.Blocked = Number(messageParts[14]);
 		hutData.HttpPort = Number(messageParts[15]);
@@ -237,9 +241,43 @@ export class AnelHutCommunication {
 			if (messageParts.length > 26) {
 				hutData.Type = messageParts[26];
 
+				if (hutData.Type == "H") {
+					this.logger.info("HOME: initialize only 3 relais");
+					//home -> support only 3 relais -> initialize relais of home again
+					hutData.Relais = this.GetRelaisList(messageParts, 3);
+				}
+
 				//--------------------------------------------------------------------------------
 				//Typ { a = ADV; i = IO; h = HUT; o = ONE; f = ONE-F; H = Home; P = PRO}
 				//--------------------------------------------------------------------------------
+
+				//give type a name here:
+				switch (hutData.Type) {
+					case "a":
+						hutData.Type = "ADV";
+						break;
+					case "i":
+						hutData.Type = "IO";
+						break;
+					case "h":
+						hutData.Type = "HUT";
+						break;
+					case "o":
+						hutData.Type = "ONE";
+						break;
+					case "f":
+						hutData.Type = "ONE-F";
+						break;
+					case "H":
+						hutData.Type = "Home";
+						break;
+					case "P":
+						hutData.Type = "PRO";
+						break;
+					default:
+						hutData.Type = "unknown";
+						break;
+				}
 
 				//Power
 				hutData.PowerMeasurement = false;
