@@ -15,7 +15,8 @@
 
 ## anelhut adapter for ioBroker
 
-Adapter for the NET-PwrCrtl Hut of ANEL Electronic AG
+Adapter for the NET-PwrCrtl devices of ANEL Electronic AG
+Manufacturer: https://shop.anel.eu/
 
 ## Usage
 
@@ -43,10 +44,14 @@ Adapter for the NET-PwrCrtl Hut of ANEL Electronic AG
 ## Note
 
 The development of this adapter is currently not finished. In the future i want to integrate this adapter into the official adapter list.
-This adapter was only tested with two Anel "NET-PwrCtrl HUT 2C HV" but it should work with other Anel devices as well.
+This adapter was tested with all Anel devices. Thanks to the anel developer :).
 Please report any issues.
 
 ## Changelog
+
+### 1.0.5
+
+-   (dan1-de) Fixed issues with sensor; display only 3 relais at anel home device; display type code instead of only letter; fixed temperature
 
 ### 1.0.4
 
