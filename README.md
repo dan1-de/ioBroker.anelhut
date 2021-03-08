@@ -49,7 +49,7 @@ Please report any issues.
 
 ## Changelog
 
-### 1.0.5
+### 1.0.6
 
 -   (dan1-de) Fixed issues with sensor; display only 3 relais at anel home device; display type code instead of only letter; fixed temperature
 
