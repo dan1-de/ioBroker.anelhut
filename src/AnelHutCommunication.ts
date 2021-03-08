@@ -230,7 +230,7 @@ export class AnelHutCommunication {
 			hutData.IO = IOList;
 
 			const temp: string = messageParts[24].substr(0, messageParts[24].length - 2);
-			hutData.Temperature = Number(temp.replace(".", ","));
+			hutData.Temperature = Number(temp);
 			hutData.Firmware = messageParts[25];
 
 			//since FW 6.0
@@ -245,13 +245,13 @@ export class AnelHutCommunication {
 				hutData.PowerMeasurement = false;
 				if (messageParts[27] == "p") {
 					const start = 28;
-					hutData.VoltageRMS = Number(messageParts[start].replace(".", ","));
-					hutData.CurrentRMS = Number(messageParts[start + 1].replace(".", ","));
-					hutData.LineFrequency = Number(messageParts[start + 2].replace(".", ","));
-					hutData.ActivePower = Number(messageParts[start + 3].replace(".", ","));
-					hutData.ApparentPower = Number(messageParts[start + 4].replace(".", ","));
-					hutData.ReactivePower = Number(messageParts[start + 5].replace(".", ","));
-					hutData.PowerFactor = Number(messageParts[start + 6].replace(".", ","));
+					hutData.VoltageRMS = Number(messageParts[start]);
+					hutData.CurrentRMS = Number(messageParts[start + 1]);
+					hutData.LineFrequency = Number(messageParts[start + 2]);
+					hutData.ActivePower = Number(messageParts[start + 3]);
+					hutData.ApparentPower = Number(messageParts[start + 4]);
+					hutData.ReactivePower = Number(messageParts[start + 5]);
+					hutData.PowerFactor = Number(messageParts[start + 6]);
 
 					hutData.PowerMeasurement = true;
 				}
@@ -260,9 +260,9 @@ export class AnelHutCommunication {
 				hutData.Sensor_1_Ready = false;
 				if (messageParts[messageParts.length - 6] == "s") {
 					hutData.Sensor_1_Ready = true;
-					hutData.Sensor_1_Temperature = Number(messageParts[messageParts.length - 5].replace(".", ","));
-					hutData.Sensor_1_Humidity = Number(messageParts[messageParts.length - 4].replace(".", ","));
-					hutData.Sensor_1_Brightness = Number(messageParts[messageParts.length - 3].replace(".", ","));
+					hutData.Sensor_1_Temperature = Number(messageParts[messageParts.length - 5]);
+					hutData.Sensor_1_Humidity = Number(messageParts[messageParts.length - 4]);
+					hutData.Sensor_1_Brightness = Number(messageParts[messageParts.length - 3]);
 				}
 
 				hutData.XOR_USER_Password = false;

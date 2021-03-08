@@ -3,4 +3,7 @@
 - Passwords:
     - Encrypt and decrypt password in config
     
-- Temperature not working
+- Sensor: 
+    Temperature not working
+- Home: 
+    - display only 3 relais
