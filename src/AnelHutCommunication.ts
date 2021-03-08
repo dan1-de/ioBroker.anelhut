@@ -241,12 +241,6 @@ export class AnelHutCommunication {
 			if (messageParts.length > 26) {
 				hutData.Type = messageParts[26];
 
-				if (hutData.Type == "H") {
-					this.logger.info("HOME: initialize only 3 relais");
-					//home -> support only 3 relais -> initialize relais of home again
-					hutData.Relais = this.GetRelaisList(messageParts, 3);
-				}
-
 				//--------------------------------------------------------------------------------
 				//Typ { a = ADV; i = IO; h = HUT; o = ONE; f = ONE-F; H = Home; P = PRO}
 				//--------------------------------------------------------------------------------
@@ -255,6 +249,7 @@ export class AnelHutCommunication {
 				switch (hutData.Type) {
 					case "a":
 						hutData.Type = "ADV";
+						hutData.IO = new Array<IOState>(); // no IO
 						break;
 					case "i":
 						hutData.Type = "IO";
@@ -264,15 +259,22 @@ export class AnelHutCommunication {
 						break;
 					case "o":
 						hutData.Type = "ONE";
+						hutData.IO = new Array<IOState>(); // no IO
 						break;
 					case "f":
 						hutData.Type = "ONE-F";
+						hutData.IO = new Array<IOState>(); // no IO
 						break;
 					case "H":
 						hutData.Type = "Home";
+						this.logger.info("HOME: initialize only 3 relais");
+						// home -> support only 3 relais -> initialize relais of home again
+						hutData.Relais = this.GetRelaisList(messageParts, 3);
+						hutData.IO = new Array<IOState>(); // no IO
 						break;
 					case "P":
 						hutData.Type = "PRO";
+						hutData.IO = new Array<IOState>(); // no IO
 						break;
 					default:
 						hutData.Type = "unknown";
