@@ -28,7 +28,12 @@ export class AnelHutCommunication {
 		this.udpSendPort = udpSendPort;
 		this.logger = logger;
 
-		this.socket.bind(udpRecievePort);
+		try {
+			this.socket.bind(udpRecievePort);
+		} catch (e) {
+			this.logger.error("Error binding to socket: " + e);
+			return;
+		}
 
 		this.socket.on("listening", () => {
 			// const broadcastAddress = "192.168.178.255";
@@ -54,6 +59,12 @@ export class AnelHutCommunication {
 			this.logger.error(`UDP Server Error: ${err.stack}`);
 			this.socket.close();
 		});
+	}
+
+	public CloseSocket(): void {
+		try {
+			this.socket.close();
+		} catch (e) {}
 	}
 
 	private static keyCharAt(key, i): number {

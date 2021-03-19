@@ -73,9 +73,35 @@
 		]
 	},
 	"native": {
-		"option1": true,
-		"option2": "42"
+		"DeviceName": "",
+		"DeviceIP": "",
+		"UDPSendPort": 75,
+		"UDPRecievePort": 77,
+		"Username": "admin",
+		"Password": "anel"
 	},
 	"objects": [],
-	"instanceObjects": []
+	"instanceObjects": [
+		{
+			"_id": "info",
+			"type": "channel",
+			"common": {
+				"name": "Information"
+			},
+			"native": {}
+		},
+		{
+			"_id": "info.connection",
+			"type": "state",
+			"common": {
+				"role": "indicator.connected",
+				"name": "If connected to at least one device",
+				"type": "boolean",
+				"read": true,
+				"write": false,
+				"def": false
+			},
+			"native": {}
+		}
+	]
 }

@@ -115,7 +115,7 @@ class Anelhut extends utils.Adapter {
 				});
 				await this.setDeviceProperties(deviceName, "Name", "string", relais.Name);
 				await this.setDeviceProperties(deviceName, "Status", "boolean", relais.Status, "switch");
-				this.subscribeStates(deviceName + "." + "Status");
+				this.subscribeStates(deviceName + "." + "Status"); //change this later -> no subscribe on every update
 			});
 
 			await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", true);
@@ -157,8 +157,6 @@ class Anelhut extends utils.Adapter {
 		});
 
 		await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", false);
-
-		// await this.UpdateHutData(device, new HutData());
 
 		// add link to communication
 		device.HutCommunication = new AnelHutCommunication(
@@ -207,12 +205,24 @@ class Anelhut extends utils.Adapter {
 
 	private anelConfigDevices!: Array<AnelHut>;
 
+	private async createInfoObject(): Promise<void> {
+		await this.setObjectNotExistsAsync("info", {
+			type: "device",
+			common: {
+				name: "info",
+			},
+			native: {},
+		});
+		await this.setDeviceProperties("info", "connection", "boolean", false);
+	}
+
 	/**
 	 * Is called when databases are connected and adapter received configuration.
 	 */
 	private async onReady(): Promise<void> {
 		// Initialize your adapter here
 		this.log.info("Adapter anelhut starting...");
+		// this.createInfoObject(); // maybe not necessary
 
 		this.anelConfigDevices = this.config.getAnelDevices;
 		if (this.anelConfigDevices == undefined || this.anelConfigDevices.length <= 0) {
@@ -229,50 +239,8 @@ class Anelhut extends utils.Adapter {
 		});
 
 		this.log.info("Adapter anelhut initialized");
-
 		//update adapter status
 		this.setState("info.connection", true, true);
-
-		/*
-		For every state in the system there has to be also an object of type state
-		Here a simple template for a boolean variable named "testVariable"
-		Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-		*/
-
-		// await this.setObjectNotExistsAsync("testVariable", {
-		// 	type: "state",
-		// 	common: {
-		// 		name: "testVariable",
-		// 		type: "boolean",
-		// 		role: "indicator",
-		// 		read: true,
-		// 		write: true,
-		// 	},
-		// 	native: {},
-		// });
-
-		// In order to get state updates, you need to subscribe to them. The following line adds a subscription for our variable we have created above.
-
-		// this.subscribeStates("testVariable");
-
-		// You can also add a subscription for multiple states. The following line watches all states starting with "lights."
-		// this.subscribeStates("lights.*");
-		// Or, if you really must, you can also watch all states. Don't do this if you don't need to. Otherwise this will cause a lot of unnecessary load on the system:
-		// this.subscribeStates("*");
-
-		/*
-			setState examples
-			you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-		*/
-		// the variable testVariable is set to true as command (ack=false)
-		// await this.setStateAsync("testVariable", true);
-
-		// same thing, but the value is flagged "ack"
-		// ack should be always set to true if the value is received from or acknowledged from the target system
-		// await this.setStateAsync("testVariable", { val: true, ack: true });
-
-		// // same thing, but the state is deleted after 30s (getState will return null afterwards)
-		// await this.setStateAsync("testVariable", { val: true, ack: true, expire: 30 });
 
 		// examples for the checkPassword/checkGroup functions
 		let result = await this.checkPasswordAsync("admin", "iobroker");
@@ -292,6 +260,13 @@ class Anelhut extends utils.Adapter {
 			// clearTimeout(timeout2);
 			// ...
 			// clearInterval(interval1);
+
+			this.anelConfigDevices.forEach(async (d) => {
+				try {
+					d.HutCommunication.CloseSocket();
+				} catch (e) {}
+			});
+			this.setState("info.connection", false, true);
 
 			callback();
 		} catch (e) {
