@@ -7,7 +7,7 @@
 
 - IO:
     - Control HUT IO over iobroker
-    - Change true/false to 0/1
+    - Change true/false to 0/1 -> no fix, because behaviour is equal to relais
 
 - General
     - Hide Sensor/Powermeasurement if not available
