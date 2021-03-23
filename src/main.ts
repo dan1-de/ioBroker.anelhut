@@ -142,7 +142,8 @@ class Anelhut extends utils.Adapter {
 				});
 				await this.setDeviceProperties(deviceName, "Name", "string", io.IOName);
 				await this.setDeviceProperties(deviceName, "Direction", "string", io.IODirection);
-				await this.setDeviceProperties(deviceName, "Status", "boolean", io.Status);
+				await this.setDeviceProperties(deviceName, "Status", "boolean", io.Status, "switch");
+				this.subscribeStates(deviceName + "." + "Status"); //change this later -> no subscribe on every update
 			});
 		}
 	}
@@ -255,12 +256,6 @@ class Anelhut extends utils.Adapter {
 	 */
 	private onUnload(callback: () => void): void {
 		try {
-			// Here you must clear all timeouts or intervals that may still be active
-			// clearTimeout(timeout1);
-			// clearTimeout(timeout2);
-			// ...
-			// clearInterval(interval1);
-
 			this.anelConfigDevices.forEach(async (d) => {
 				try {
 					d.HutCommunication.CloseSocket();
@@ -274,33 +269,30 @@ class Anelhut extends utils.Adapter {
 		}
 	}
 
-	// If you need to react to object changes, uncomment the following block and the corresponding line in the constructor.
-	// You also need to subscribe to the objects with `this.subscribeObjects`, similar to `this.subscribeStates`.
-	// /**
-	//  * Is called if a subscribed object changes
-	//  */
-	// private onObjectChange(id: string, obj: ioBroker.Object | null | undefined): void {
-	// 	if (obj) {
-	// 		// The object was changed
-	// 		this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
-	// 	} else {
-	// 		// The object was deleted
-	// 		this.log.info(`object ${id} deleted`);
-	// 	}
-	// }
-
-	private SendCommandToHut(id: string, state: number): void {
+	private SendCommand(id: string, state: number): void {
 		// anelhut.0.HUTOG.relais.4.Status
+		// anelhut.0.HUTEG.io.1.Status
+
+		const XorEncryptUserPass = false;
+
 		const idParts = id.split(".");
 		const hutName = idParts[2];
 		const type = idParts[3];
-		const relaisNumber = Number(idParts[4]);
+		const slotNumber = Number(idParts[4]);
 		const status = idParts[5];
 
 		if (type == "relais" && status == "Status") {
 			this.anelConfigDevices.forEach((device) => {
 				if (device.DeviceName == hutName) {
-					device.HutCommunication.Switch(relaisNumber, state, false);
+					device.HutCommunication.SwitchRelais(slotNumber, state, XorEncryptUserPass);
+				}
+			});
+		}
+
+		if (type == "io" && status == "Status") {
+			this.anelConfigDevices.forEach((device) => {
+				if (device.DeviceName == hutName) {
+					device.HutCommunication.SwitchIo(slotNumber, state, XorEncryptUserPass);
 				}
 			});
 		}
@@ -319,7 +311,7 @@ class Anelhut extends utils.Adapter {
 			if (!state.ack) {
 				// user changed value -> react with action
 				this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})` + "-> changed by user");
-				this.SendCommandToHut(id, Number(state.val));
+				this.SendCommand(id, Number(state.val));
 			}
 		} else {
 			// The state was deleted

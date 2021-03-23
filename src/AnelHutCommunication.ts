@@ -117,8 +117,12 @@ export class AnelHutCommunication {
 		return (r ? enc.slice(0, r - 3) : enc) + "===".slice(r || 3);
 	}
 
+	public SwitchIo(relaisNumber: number, newState: number, encrypt = false): void {
+		this.logger.error("IO Switch is currently not implemented:");
+	}
+
 	//encryption is currently not working
-	public Switch(relaisNumber: number, newState: number, encrypt = false): void {
+	public SwitchRelais(relaisNumber: number, newState: number, encrypt = false): void {
 		let command = "";
 		if (newState == 0) {
 			command = "Sw_off" + relaisNumber;
