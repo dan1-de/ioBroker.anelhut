@@ -117,11 +117,19 @@ export class AnelHutCommunication {
 		return (r ? enc.slice(0, r - 3) : enc) + "===".slice(r || 3);
 	}
 
-	public SwitchIo(relaisNumber: number, newState: number, encrypt = false): void {
-		this.logger.error("IO Switch is currently not implemented:");
+	public SwitchIo(ioNumber: number, newState: number, encrypt = false): void {
+		let command = "";
+		if (newState == 0) {
+			command = "IO_off" + ioNumber;
+		} else if (newState == 1) {
+			command = "IO_on" + ioNumber;
+		} else {
+			console.log("Invalid command");
+			return;
+		}
+		this.Switch(command, encrypt);
 	}
 
-	//encryption is currently not working
 	public SwitchRelais(relaisNumber: number, newState: number, encrypt = false): void {
 		let command = "";
 		if (newState == 0) {
@@ -132,6 +140,12 @@ export class AnelHutCommunication {
 			console.log("Invalid command");
 			return;
 		}
+		this.Switch(command, encrypt);
+	}
+
+	//encryption is currently not working -> encrypt boolean is currently ignored
+	private Switch(command: string, encrypt: boolean): void {
+		encrypt = false; // ignore encryption -> fix this in next versions
 
 		const user_password = this.user + this.password;
 		const encr_user_password = AnelHutCommunication.EncryptUserPassword(user_password, this.password) + "\0";
