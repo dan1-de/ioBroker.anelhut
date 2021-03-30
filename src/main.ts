@@ -115,7 +115,12 @@ class Anelhut extends utils.Adapter {
 				});
 				await this.setDeviceProperties(deviceName, "Name", "string", relais.Name);
 				await this.setDeviceProperties(deviceName, "Status", "boolean", relais.Status, "switch");
-				this.subscribeStates(deviceName + "." + "Status"); //change this later -> no subscribe on every update
+
+				// only subscribe on the first initialisation
+				if (!device.RelaisChangeSubscription) {
+					device.RelaisChangeSubscription = true;
+					this.subscribeStates(deviceName + "." + "Status");
+				}
 			});
 
 			await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", true);
@@ -143,7 +148,12 @@ class Anelhut extends utils.Adapter {
 				await this.setDeviceProperties(deviceName, "Name", "string", io.IOName);
 				await this.setDeviceProperties(deviceName, "Direction", "string", io.IODirection);
 				await this.setDeviceProperties(deviceName, "Status", "boolean", io.Status, "switch");
-				this.subscribeStates(deviceName + "." + "Status"); //change this later -> no subscribe on every update
+
+				// only subscribe on the first initialisation
+				if (!device.IoChangeSubscription) {
+					device.IoChangeSubscription = true;
+					this.subscribeStates(deviceName + "." + "Status");
+				}
 			});
 		}
 	}
@@ -318,23 +328,6 @@ class Anelhut extends utils.Adapter {
 			this.log.info(`state ${id} deleted`);
 		}
 	}
-
-	// If you need to accept messages in your adapter, uncomment the following block and the corresponding line in the constructor.
-	// /**
-	//  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
-	//  * Using this method requires "common.messagebox" property to be set to true in io-package.json
-	//  */
-	// private onMessage(obj: ioBroker.Message): void {
-	// 	if (typeof obj === "object" && obj.message) {
-	// 		if (obj.command === "send") {
-	// 			// e.g. send email or pushover or whatever
-	// 			this.log.info("send command");
-
-	// 			// Send response in callback if required
-	// 			if (obj.callback) this.sendTo(obj.from, obj.command, "Message received", obj.callback);
-	// 		}
-	// 	}
-	// }
 }
 
 if (module.parent) {

@@ -6,35 +6,34 @@
 - Send Password xor decrypted over udp
 
 - IO:
-    - Control HUT IO over iobroker
-    - Change true/false to 0/1 -> no fix, because behaviour is equal to relais
+    - Control HUT IO over iobroker -> ok
+    - Change true/false to 0/1 -> no change, because behaviour is equal to relais
 
 - General
     - Hide Sensor/Powermeasurement if not available
 
-- Release:
-    Move to iobroker adapter repository
 
+
+
+
+I know that it will be manual work but would it not be better to encrxpt the passwords stored here? I'm sorry but the auto-encrypt feature from cointroller can not be used in "arrays" :-(
+-> todo: later
+
+I think it needs unneeded calls that you check the object existence on every write ... I think this is enough once (you can use a map /Objects-keys to remember which object was created/checked already for instance. Same for all the devices/channels in update method
+-> todo: later
 
 
 please add the default values for all configation options to io-package native https://github.com/dan1-de/ioBroker.anelhut/blob/main/io-package.json#L75-L78
 -> fixed
 
-I know that it will be manual work but would it not be better to encrxpt the passwords stored here? I'm sorry but the auto-encrypt feature from cointroller can not be used in "arrays" :-(
-
-
-
 it seems that info.connection is missing as object? https://github.com/dan1-de/ioBroker.anelhut/runs/2058555301#step:6:233 ... ideally add it to instanceObjects in io-package
 -> fixed 
 
 is the subscribe here https://github.com/dan1-de/ioBroker.anelhut/blob/75a6aee8e3dadb5f18d3a2a70da5b4cb70b9b2b9/src/main.ts#L118 really to be executed on every update? SHould not be a bigger issue, but still strange
--> auslagern
-
-I think it needs unneeded calls that you check the object existence on every write ... I think this is enough once (you can use a map /Objects-keys to remember which object was created/checked already for instance. Same for all the devices/channels in update method
--> todo
+-> fixed: added bool to check
 
 I also think that the template code https://github.com/dan1-de/ioBroker.anelhut/blob/75a6aee8e3dadb5f18d3a2a70da5b4cb70b9b2b9/src/main.ts#L236-L282 can easiely be removed, or ?! ;-)
--> todo: remove
+-> fixed
 
 you need to clear all timeout and connections in https://github.com/dan1-de/ioBroker.anelhut/blob/75a6aee8e3dadb5f18d3a2a70da5b4cb70b9b2b9/src/main.ts#L288-L299 (e.g. the socket/dgram you open in your communication class
 -> fixed
