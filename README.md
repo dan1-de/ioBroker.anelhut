@@ -58,7 +58,7 @@ Please report any issues.
 
 ## Changelog
 
-### 1.0.6
+### 1.0.7
 
 -   (dan1-de) Added possibility to control IO's; Code restructure
 
