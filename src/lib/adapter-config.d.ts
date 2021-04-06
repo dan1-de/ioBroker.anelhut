@@ -13,6 +13,8 @@ export class AnelHut {
 	DeviceConnected: boolean;
 	LastUpdateTimestamp: string;
 	HutCommunication: AnelHutCommunication;
+	RelaisChangeSubscription = false;
+	IoChangeSubscription = false;
 }
 
 export class RelaisStatus {

@@ -28,7 +28,12 @@ export class AnelHutCommunication {
 		this.udpSendPort = udpSendPort;
 		this.logger = logger;
 
-		this.socket.bind(udpRecievePort);
+		try {
+			this.socket.bind(udpRecievePort);
+		} catch (e) {
+			this.logger.error("Error binding to socket: " + e);
+			return;
+		}
 
 		this.socket.on("listening", () => {
 			// const broadcastAddress = "192.168.178.255";
@@ -54,6 +59,12 @@ export class AnelHutCommunication {
 			this.logger.error(`UDP Server Error: ${err.stack}`);
 			this.socket.close();
 		});
+	}
+
+	public CloseSocket(): void {
+		try {
+			this.socket.close();
+		} catch (e) {}
 	}
 
 	private static keyCharAt(key, i): number {
@@ -106,8 +117,20 @@ export class AnelHutCommunication {
 		return (r ? enc.slice(0, r - 3) : enc) + "===".slice(r || 3);
 	}
 
-	//encryption is currently not working
-	public Switch(relaisNumber: number, newState: number, encrypt = false): void {
+	public SwitchIo(ioNumber: number, newState: number, encrypt = false): void {
+		let command = "";
+		if (newState == 0) {
+			command = "IO_off" + ioNumber;
+		} else if (newState == 1) {
+			command = "IO_on" + ioNumber;
+		} else {
+			console.log("Invalid command");
+			return;
+		}
+		this.Switch(command, encrypt);
+	}
+
+	public SwitchRelais(relaisNumber: number, newState: number, encrypt = false): void {
 		let command = "";
 		if (newState == 0) {
 			command = "Sw_off" + relaisNumber;
@@ -117,6 +140,12 @@ export class AnelHutCommunication {
 			console.log("Invalid command");
 			return;
 		}
+		this.Switch(command, encrypt);
+	}
+
+	//encryption is currently not working -> encrypt boolean is currently ignored
+	private Switch(command: string, encrypt: boolean): void {
+		encrypt = false; // ignore encryption -> fix this in next versions
 
 		const user_password = this.user + this.password;
 		const encr_user_password = AnelHutCommunication.EncryptUserPassword(user_password, this.password) + "\0";
