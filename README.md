@@ -60,6 +60,10 @@ Please report any issues.
 
 ### 1.0.6
 
+-   (dan1-de) Added possibility to control IO's; Code restructure
+
+### 1.0.6
+
 -   (dan1-de) Fixed issues with sensor; display only 3 relais at anel home device; display type code instead of only letter; fixed temperature
 
 ### 1.0.4
