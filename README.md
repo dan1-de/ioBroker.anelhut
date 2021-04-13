@@ -58,6 +58,10 @@ Please report any issues.
 
 ## Changelog
 
+### 1.0.8
+
+-   (dan1-de) Quick Fix: Corrected bug in io control
+
 ### 1.0.7
 
 -   (dan1-de) Added possibility to control IO's; Code restructure
