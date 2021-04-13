@@ -116,11 +116,14 @@ class Anelhut extends utils.Adapter {
 				await this.setDeviceProperties(deviceName, "Name", "string", relais.Name);
 				await this.setDeviceProperties(deviceName, "Status", "boolean", relais.Status, "switch");
 
-				// only subscribe on the first initialisation
-				if (!device.RelaisChangeSubscription) {
-					device.RelaisChangeSubscription = true;
-					this.subscribeStates(deviceName + "." + "Status");
-				}
+				// // only subscribe on the first initialisation
+				// if (!device.RelaisChangeSubscription) {
+				// 	device.RelaisChangeSubscription = true;
+				// 	this.subscribeStates(deviceName + "." + "Status");
+				// }
+
+				//the code above is currently not working. Quick fix:
+				this.subscribeStates(deviceName + "." + "Status");
 			});
 
 			await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", true);
@@ -150,10 +153,13 @@ class Anelhut extends utils.Adapter {
 				await this.setDeviceProperties(deviceName, "Status", "boolean", io.Status, "switch");
 
 				// only subscribe on the first initialisation
-				if (!device.IoChangeSubscription) {
-					device.IoChangeSubscription = true;
-					this.subscribeStates(deviceName + "." + "Status");
-				}
+				// if (!device.IoChangeSubscription) {
+				// 	device.IoChangeSubscription = true;
+				// 	this.subscribeStates(deviceName + "." + "Status");
+				// }
+
+				//the code above is currently not working. Quick fix:
+				this.subscribeStates(deviceName + "." + "Status");
 			});
 		}
 	}
@@ -179,7 +185,7 @@ class Anelhut extends utils.Adapter {
 			this.log,
 		);
 
-		device.HutCommunication.SubscribeStatusUpdates().subscribe((hutData) => {
+		device.HutCommunication.SubscribeStatusUpdates().subscribe((hutData: HutData) => {
 			this.log.info("New hut status update: " + JSON.stringify(hutData));
 			device.LastUpdateTimestamp = new Date().toLocaleString();
 			this.UpdateHutData(device, hutData);

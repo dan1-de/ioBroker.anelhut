@@ -125,11 +125,13 @@ class Anelhut extends utils.Adapter {
                 });
                 await this.setDeviceProperties(deviceName, "Name", "string", relais.Name);
                 await this.setDeviceProperties(deviceName, "Status", "boolean", relais.Status, "switch");
-                // only subscribe on the first initialisation
-                if (!device.RelaisChangeSubscription) {
-                    device.RelaisChangeSubscription = true;
-                    this.subscribeStates(deviceName + "." + "Status");
-                }
+                // // only subscribe on the first initialisation
+                // if (!device.RelaisChangeSubscription) {
+                // 	device.RelaisChangeSubscription = true;
+                // 	this.subscribeStates(deviceName + "." + "Status");
+                // }
+                //the code above is currently not working. Quick fix:
+                this.subscribeStates(deviceName + "." + "Status");
             });
             await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", true);
             await this.setDeviceProperties(device.DeviceName, "LastUpdate", "string", hutData.LastUpdate);
@@ -156,10 +158,12 @@ class Anelhut extends utils.Adapter {
                 await this.setDeviceProperties(deviceName, "Direction", "string", io.IODirection);
                 await this.setDeviceProperties(deviceName, "Status", "boolean", io.Status, "switch");
                 // only subscribe on the first initialisation
-                if (!device.IoChangeSubscription) {
-                    device.IoChangeSubscription = true;
-                    this.subscribeStates(deviceName + "." + "Status");
-                }
+                // if (!device.IoChangeSubscription) {
+                // 	device.IoChangeSubscription = true;
+                // 	this.subscribeStates(deviceName + "." + "Status");
+                // }
+                //the code above is currently not working. Quick fix:
+                this.subscribeStates(deviceName + "." + "Status");
             });
         }
     }
