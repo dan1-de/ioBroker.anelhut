@@ -292,6 +292,7 @@ class Anelhut extends utils.Adapter {
 		const status = idParts[5];
 
 		if (type == "relais" && status == "Status") {
+			this.log.info("Relais switch command");
 			this.anelConfigDevices.forEach((device) => {
 				if (device.DeviceName == hutName) {
 					device.HutCommunication.SwitchRelais(slotNumber, state, XorEncryptUserPass);
@@ -300,6 +301,7 @@ class Anelhut extends utils.Adapter {
 		}
 
 		if (type == "io" && status == "Status") {
+			this.log.info("IO switch command");
 			this.anelConfigDevices.forEach((device) => {
 				if (device.DeviceName == hutName) {
 					device.HutCommunication.SwitchIo(slotNumber, state, XorEncryptUserPass);
