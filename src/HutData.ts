@@ -34,7 +34,7 @@ export class HutData {
 export class Relais {
 	public RelaisNumber: number;
 	public Name: string;
-	Status: number;
+	public Status: number;
 	constructor(RelaisNumber: number, Name: string, Status: number) {
 		this.RelaisNumber = RelaisNumber;
 		this.Name = Name;
@@ -43,10 +43,10 @@ export class Relais {
 }
 
 export class IOState {
-	IONumber: number;
-	IOName: string;
-	IODirection: number;
-	Status: number;
+	public IONumber: number;
+	public IOName: string;
+	public IODirection: number;
+	public Status: number;
 	constructor(IONumber: number, IOName: string, IODirection: number, Status: number) {
 		this.IONumber = IONumber;
 		this.IOName = IOName;

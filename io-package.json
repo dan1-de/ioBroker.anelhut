@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "anelhut",
-        "version": "1.0.7",
+        "version": "1.0.8",
         "news": {
             "1.0.0": {
                 "en": "initial release",
@@ -62,6 +62,18 @@
                 "es": "Código reestructurado y posibilidad implementada para controlar io's",
                 "pl": "Zrestrukturyzowany kod i zaimplementowana możliwość sterowania urządzeniami io",
                 "zh-cn": "重组代码并实现控制io的可能性"
+            },
+            "1.0.8": {
+                "en": "Quick Fix bug in io control",
+                "de": "Schnellkorrekturfehler in der Io-Steuerung",
+                "ru": "Быстрое исправление ошибки в io control",
+                "pt": "Correção rápida de bug no controle de IO",
+                "nl": "Snelle reparatiefout in io-besturing",
+                "fr": "Correction rapide d'un bug dans le contrôle io",
+                "it": "Correzione rapida di bug nel controllo io",
+                "es": "Error de corrección rápida en el control de io",
+                "pl": "Szybka naprawa błędu w sterowaniu io",
+                "zh-cn": "IO控制中的快速修复错误"
             }
         },
         "title": "Anel Hut",
