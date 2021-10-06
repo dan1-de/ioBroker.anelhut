@@ -50,7 +50,7 @@ Manufacturer: https://shop.anel.eu/
 -   Docker
     -   Don't forget the port forwarding, if you like to use this adapter with a docker environment:
         -   77:77/udp #port forwarding first anel device
-        -   77:77/udp #port forwarding second anel device
+        -   78:78/udp #port forwarding second anel device
 
 ## Note
 
