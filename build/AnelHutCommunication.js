@@ -128,7 +128,7 @@ class AnelHutCommunication {
         }
         const client = dgram.createSocket("udp4");
         client.send(bef, this.udpSendPort, this.hostIpAdress, (err) => {
-            // this.logger.error("Error while sending command to hut: " + err);
+            this.logger.error("Error while sending command to hut: " + err);
             client.close();
         });
     }
