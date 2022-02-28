@@ -1,6 +1,6 @@
 {
   "name": "iobroker.anelhut",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Adapter for the NET-PwrCrtl devices of ANEL Electronic AG",
   "author": {
     "name": "dan1-de",

@@ -201,7 +201,7 @@ export class AnelHutCommunication {
 		return RelaisList;
 	}
 
-	private DecodeMessage(message: string): HutData {
+	public DecodeMessage(message: string): HutData {
 		const hutData = new HutData();
 		if (message == undefined || message == "") {
 			//error
@@ -238,7 +238,8 @@ export class AnelHutCommunication {
 		hutData.HttpPort = Number(messageParts[15]);
 		hutData.Temperature = -127; // ??
 
-		if (messageParts[16].startsWith("NET-PWRCTRL") == true) {
+		if (messageParts[16] != undefined && messageParts[16].startsWith("NET-PWRCTRL") == true) {
+			//check for undefined because of Pro
 			hutData.Type = messageParts[17];
 			hutData.XOR_USER_Password = false;
 			if (messageParts[18] == "xor") {

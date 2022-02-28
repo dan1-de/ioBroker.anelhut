@@ -59,6 +59,10 @@ Please report any issues.
 
 ## Changelog
 
+### 1.0.9
+
+-   (dan1-de) Corrected bug for Pro v3
+
 ### 1.0.8
 
 -   (dan1-de) Quick Fix: Corrected bug in io control

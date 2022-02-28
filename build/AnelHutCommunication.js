@@ -196,7 +196,8 @@ class AnelHutCommunication {
         hutData.Blocked = Number(messageParts[14]);
         hutData.HttpPort = Number(messageParts[15]);
         hutData.Temperature = -127; // ??
-        if (messageParts[16].startsWith("NET-PWRCTRL") == true) {
+        if (messageParts[16] != undefined && messageParts[16].startsWith("NET-PWRCTRL") == true) {
+            //check for undefined because of Pro
             hutData.Type = messageParts[17];
             hutData.XOR_USER_Password = false;
             if (messageParts[18] == "xor") {
