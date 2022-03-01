@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "anelhut",
-		"version": "1.0.9",
+		"version": "1.0.10",
 		"news": {
 			"1.0.0": {
 				"en": "initial release",
@@ -129,7 +129,8 @@
 		"UDPSendPort": 75,
 		"UDPRecievePort": 77,
 		"Username": "admin",
-		"Password": "anel"
+		"Password": "anel",
+		"UserPasswordXOR": false
 	},
 	"objects": [],
 	"instanceObjects": [

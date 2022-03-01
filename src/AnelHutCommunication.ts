@@ -11,6 +11,7 @@ export class AnelHutCommunication {
 	private udpSendPort: number;
 	private HutStatusObservable: Subject<any> = new Subject<any>();
 	private logger: ioBroker.Logger;
+	private userPasswordXOR: boolean;
 
 	constructor(
 		hostIpAdress: string,
@@ -19,6 +20,7 @@ export class AnelHutCommunication {
 		user: string,
 		password: string,
 		logger: ioBroker.Logger,
+		userPasswordXOR: boolean,
 	) {
 		this.socket = dgram.createSocket("udp4");
 		this.hostIpAdress = hostIpAdress;
@@ -27,6 +29,9 @@ export class AnelHutCommunication {
 		this.udpRecievePort = udpRecievePort;
 		this.udpSendPort = udpSendPort;
 		this.logger = logger;
+		this.userPasswordXOR = userPasswordXOR;
+
+		this.logger.debug("AnelHutCommunication constructor. this.userPasswordXOR = " + this.userPasswordXOR);
 
 		try {
 			this.logger.debug("Starting UDP listener on port: " + this.udpRecievePort);
@@ -118,7 +123,7 @@ export class AnelHutCommunication {
 		return (r ? enc.slice(0, r - 3) : enc) + "===".slice(r || 3);
 	}
 
-	public SwitchIo(ioNumber: number, newState: number, encrypt = false): void {
+	public SwitchIo(ioNumber: number, newState: number): void {
 		let command = "";
 		if (newState == 0) {
 			command = "IO_off" + ioNumber;
@@ -129,10 +134,10 @@ export class AnelHutCommunication {
 			return;
 		}
 		this.logger.debug(`Switching IO Nr. ${ioNumber} with newState ${newState} and command ${command}`);
-		this.Switch(command, encrypt);
+		this.Switch(command);
 	}
 
-	public SwitchRelais(relaisNumber: number, newState: number, encrypt = false): void {
+	public SwitchRelais(relaisNumber: number, newState: number): void {
 		let command = "";
 		if (newState == 0) {
 			command = "Sw_off" + relaisNumber;
@@ -143,19 +148,19 @@ export class AnelHutCommunication {
 			return;
 		}
 		this.logger.debug(`Switching Relais Nr. ${relaisNumber} with newState ${newState} and command ${command}`);
-		this.Switch(command, encrypt);
+		this.Switch(command);
 	}
 
 	//encryption is currently not working -> encrypt boolean is currently ignored
-	private Switch(command: string, encrypt: boolean): void {
-		encrypt = false; // ignore encryption -> fix this in next versions
+	private Switch(command: string): void {
+		// encrypt = false; // ignore encryption -> fix this in next versions
 
 		const user_password = this.user + this.password;
 		const encr_user_password = AnelHutCommunication.EncryptUserPassword(user_password, this.password) + "\0";
 
 		let bef;
 
-		if (encrypt) {
+		if (this.userPasswordXOR) {
 			bef = command + encr_user_password; //for example: Sw_on1ASfdhhgfDS
 			this.logger.debug("Password encryption enabled. EncrPasswd: " + encr_user_password);
 		} else {
@@ -165,7 +170,12 @@ export class AnelHutCommunication {
 
 		const client = dgram.createSocket("udp4");
 		client.send(bef, this.udpSendPort, this.hostIpAdress, (err) => {
-			this.logger.error("Error while sending command to hut: " + err?.message);
+			if (err != undefined) {
+				this.logger.error("Error while sending command to hut: " + err?.message);
+			} else {
+				this.logger.info("Command sent successfully");
+			}
+
 			client.close();
 		});
 	}

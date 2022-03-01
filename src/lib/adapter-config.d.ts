@@ -9,6 +9,7 @@ export class AnelHut {
 	UDPRecievePort: string;
 	Username: string;
 	Password: string;
+	UserPasswordXOR: boolean;
 	DeviceActive: boolean;
 	DeviceConnected: boolean;
 	LastUpdateTimestamp: string;
