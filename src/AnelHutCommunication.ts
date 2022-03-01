@@ -29,14 +29,14 @@ export class AnelHutCommunication {
 		this.logger = logger;
 
 		try {
-			this.socket.bind(udpRecievePort);
+			this.logger.debug("Starting UDP listener on port: " + this.udpRecievePort);
+			this.socket.bind(this.udpRecievePort);
 		} catch (e) {
-			this.logger.error("Error binding to socket: " + e);
+			this.logger.error("UDP Listener: Error binding to socket: " + e);
 			return;
 		}
 
 		this.socket.on("listening", () => {
-			// const broadcastAddress = "192.168.178.255";
 			const broadcastAddress = "255.255.255.255";
 			const data = Buffer.from("wer da?");
 			this.socket.setBroadcast(true);
@@ -45,7 +45,7 @@ export class AnelHutCommunication {
 		});
 
 		this.socket.on("message", (message, remote) => {
-			// console.log("New Message from: " + remote.address + ":" + remote.port + " - " + message);
+			this.logger.debug("New Message from: " + remote.address + ":" + remote.port + " - " + message);
 			if (remote.address == this.hostIpAdress) {
 				const Hutdata = this.DecodeMessage(message);
 				if (Hutdata != undefined && Hutdata.IP != undefined && Hutdata.IP == this.hostIpAdress) {
@@ -63,6 +63,7 @@ export class AnelHutCommunication {
 
 	public CloseSocket(): void {
 		try {
+			this.logger.debug("Closing socket now");
 			this.socket.close();
 		} catch (e) {}
 	}
@@ -124,9 +125,10 @@ export class AnelHutCommunication {
 		} else if (newState == 1) {
 			command = "IO_on" + ioNumber;
 		} else {
-			console.log("Invalid command");
+			this.logger.error("SwitchIo: Invalid command " + command);
 			return;
 		}
+		this.logger.debug(`Switching IO Nr. ${ioNumber} with newState ${newState} and command ${command}`);
 		this.Switch(command, encrypt);
 	}
 
@@ -137,9 +139,10 @@ export class AnelHutCommunication {
 		} else if (newState == 1) {
 			command = "Sw_on" + relaisNumber;
 		} else {
-			console.log("Invalid command");
+			this.logger.error("Switch Relais: Invalid command");
 			return;
 		}
+		this.logger.debug(`Switching Relais Nr. ${relaisNumber} with newState ${newState} and command ${command}`);
 		this.Switch(command, encrypt);
 	}
 
@@ -149,18 +152,20 @@ export class AnelHutCommunication {
 
 		const user_password = this.user + this.password;
 		const encr_user_password = AnelHutCommunication.EncryptUserPassword(user_password, this.password) + "\0";
-		console.log("EncrPasswd: " + encr_user_password);
+
 		let bef;
 
 		if (encrypt) {
 			bef = command + encr_user_password; //for example: Sw_on1ASfdhhgfDS
+			this.logger.debug("Password encryption enabled. EncrPasswd: " + encr_user_password);
 		} else {
 			bef = command + user_password; //for example: Sw_on1adminanel
+			this.logger.debug("Password encryption disabled");
 		}
 
 		const client = dgram.createSocket("udp4");
 		client.send(bef, this.udpSendPort, this.hostIpAdress, (err) => {
-			this.logger.error("Error while sending command to hut: " + err);
+			this.logger.error("Error while sending command to hut: " + err?.message);
 			client.close();
 		});
 	}
