@@ -60,6 +60,10 @@ Please report any issues.
 
 ## Changelog
 
+### 1.0.10
+
+-   (dan1-de) Implemented XOR User/Password encryption; improved logging/log levels;
+
 ### 1.0.9
 
 -   (dan1-de) Corrected bug for Pro v3

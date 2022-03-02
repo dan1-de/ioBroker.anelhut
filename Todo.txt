@@ -3,7 +3,7 @@
 - Passwords:
     - Encrypt and decrypt password in config -> in progress
     
-- Send Password xor decrypted over udp
+- Send Password xor decrypted over udp -> implemented
 
 - IO:
     - Change IO Direction over iobroker
