@@ -1,4 +1,5 @@
 export class MockLogger implements ioBroker.Logger {
+	//eslint-disable-next-line @typescript-eslint/no-empty-function
 	constructor() {}
 	silly(message: string): void {
 		console.log("[SILLY] " + message);
