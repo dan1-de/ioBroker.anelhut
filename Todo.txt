@@ -3,16 +3,15 @@
 - Passwords:
     - Encrypt and decrypt password in config -> in progress
     
-- Send Password xor decrypted over udp
+- Send Password xor decrypted over udp -> implemented
 
 - IO:
-    - Control HUT IO over iobroker -> ok
-    - Change true/false to 0/1 -> no change, because behaviour is equal to relais
+    - Change IO Direction over iobroker
 
 - General
     - Hide Sensor/Powermeasurement if not available
-
-
+    - Sensor_1_Ready is always false
+    - Add Units to IO Broker Datapoints for Sensor_1_Brightness;Sensor_1_Humidity;Sensor_1_Temperature
 
 
 

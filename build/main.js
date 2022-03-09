@@ -176,10 +176,12 @@ class Anelhut extends utils.Adapter {
             native: {},
         });
         await this.setDeviceProperties(device.DeviceName, "Connected", "boolean", false);
+        this.log.info("Init device " + device.DeviceName);
+        this.log.debug("UserPasswordXOR: " + device.UserPasswordXOR);
         // add link to communication
-        device.HutCommunication = new AnelHutCommunication_1.AnelHutCommunication(device.DeviceIP, Number(device.UDPRecievePort), Number(device.UDPSendPort), device.Username, device.Password, this.log);
+        device.HutCommunication = new AnelHutCommunication_1.AnelHutCommunication(device.DeviceIP, Number(device.UDPRecievePort), Number(device.UDPSendPort), device.Username, device.Password, this.log, device.UserPasswordXOR);
         device.HutCommunication.SubscribeStatusUpdates().subscribe((hutData) => {
-            this.log.info("New hut status update: " + JSON.stringify(hutData));
+            this.log.debug("New hut status update: " + JSON.stringify(hutData));
             device.LastUpdateTimestamp = new Date().toLocaleString();
             this.UpdateHutData(device, hutData);
         });
@@ -264,7 +266,6 @@ class Anelhut extends utils.Adapter {
     SendCommand(id, state) {
         // anelhut.0.HUTOG.relais.4.Status
         // anelhut.0.HUTEG.io.1.Status
-        const XorEncryptUserPass = false;
         const idParts = id.split(".");
         const hutName = idParts[2];
         const type = idParts[3];
@@ -274,7 +275,7 @@ class Anelhut extends utils.Adapter {
             this.log.info("Relais switch command");
             this.anelConfigDevices.forEach((device) => {
                 if (device.DeviceName == hutName) {
-                    device.HutCommunication.SwitchRelais(slotNumber, state, XorEncryptUserPass);
+                    device.HutCommunication.SwitchRelais(slotNumber, state);
                 }
             });
         }
@@ -282,7 +283,7 @@ class Anelhut extends utils.Adapter {
             this.log.info("IO switch command");
             this.anelConfigDevices.forEach((device) => {
                 if (device.DeviceName == hutName) {
-                    device.HutCommunication.SwitchIo(slotNumber, state, XorEncryptUserPass);
+                    device.HutCommunication.SwitchIo(slotNumber, state);
                 }
             });
         }

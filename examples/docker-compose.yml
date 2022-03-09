@@ -1,0 +1,33 @@
+version: "3"
+services:
+    iobroker:
+        network_mode: host
+        # restart: always # optional auto restart
+        image: buanet/iobroker:v5.2.0 # set fixed version because of compatibility
+        container_name: iobroker
+        hostname: iobroker
+        ports:
+            #show listening ports with: netstat -plnt (TCP) & netstat -plnu (UDP)
+            - 8081:8081 # Admin
+            - 8081:8081/udp # Admin
+            - 8082:8082 # web adapter: jarvis, etc.
+            - 8400:8400 # jarvis websocket verbindung (required for new v3)
+            - 8084:8084 # socketio
+            - 1883:1883 # Mqtt
+            - 8087:8087 # SimpleApi
+
+            # Anel Adapter with root privileges
+            - 77:77/udp # Anel Hut Adapter Device 1
+            - 78:78/udp # Anel Hut Adapter Device 2
+
+            # Anel Adapter without root privileges (use ports > 1024)
+            # - 2077:2077/udp # Anel Hut Adapter Device 1
+            # - 2078:2078/udp # Anel Hut Adapter Device 2
+
+            - 5683:5683/udp # Shelly
+            - 9000:9000 # Javascript
+            - 9001:9001 # Javascript
+        environment:
+            - PACKAGES=ssh iputils-ping # additional apt packages for linux control adapter
+        volumes:
+            - ./iobroker:/opt/iobroker
