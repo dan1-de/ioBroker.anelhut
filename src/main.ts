@@ -114,7 +114,9 @@ class Anelhut extends utils.Adapter {
 					native: {},
 				});
 				await this.setDeviceProperties(deviceName, "Name", "string", relais.Name);
-				await this.setDeviceProperties(deviceName, "Status", "boolean", relais.Status, "switch");
+				let RelaisStatusBool = false;
+				if (relais.Status == 1) RelaisStatusBool = true;
+				await this.setDeviceProperties(deviceName, "Status", "boolean", RelaisStatusBool, "switch");
 
 				// // only subscribe on the first initialisation
 				// if (!device.RelaisChangeSubscription) {

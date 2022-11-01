@@ -1,171 +1,190 @@
 {
-	"common": {
-		"name": "anelhut",
-		"version": "1.0.10",
-		"news": {
-			"1.0.0": {
-				"en": "initial release",
-				"de": "Erstveröffentlichung",
-				"ru": "Начальная версия",
-				"pt": "lançamento inicial",
-				"nl": "Eerste uitgave",
-				"fr": "Première version",
-				"it": "Versione iniziale",
-				"es": "Versión inicial",
-				"pl": "Pierwsze wydanie",
-				"zh-cn": "首次出版"
-			},
-			"1.0.3": {
-				"en": "Improvements: logging, udp broadcast adress, configuration",
-				"de": "Verbesserungen: Protokollierung, udp-Broadcast-Adresse, Konfiguration",
-				"ru": "Улучшения: ведение журнала, широковещательный адрес udp, конфигурация",
-				"pt": "Melhorias: registro, endereço de transmissão udp, configuração",
-				"nl": "Verbeteringen: logboekregistratie, udp-uitzendadres, configuratie",
-				"fr": "Améliorations: journalisation, adresse de diffusion udp, configuration",
-				"it": "Miglioramenti: registrazione, indirizzo di trasmissione udp, configurazione",
-				"es": "Mejoras: registro, dirección de transmisión udp, configuración",
-				"pl": "Ulepszenia: logowanie, adres transmisji UDP, konfiguracja",
-				"zh-cn": "改进：日志记录，udp广播地址，配置"
-			},
-			"1.0.4": {
-				"en": "New Icon, Improved object structure",
-				"de": "Neues Symbol, verbesserte Objektstruktur",
-				"ru": "Новый значок, улучшенная структура объекта",
-				"pt": "Novo ícone, estrutura de objeto aprimorada",
-				"nl": "Nieuw pictogram, verbeterde objectstructuur",
-				"fr": "Nouvelle icône, structure d'objet améliorée",
-				"it": "Nuova icona, struttura degli oggetti migliorata",
-				"es": "Nuevo icono, estructura de objeto mejorada",
-				"pl": "Nowa ikona, ulepszona struktura obiektu",
-				"zh-cn": "新图标，改进的对象结构"
-			},
-			"1.0.6": {
-				"en": "Fixed issues with sensor, display only 3 relais at anel home device, display type code instead of only letter, fixed temperature",
-				"de": "Behobene Probleme mit dem Sensor, Anzeige von nur 3 Relais an einem Heimgerät, Anzeige des Typcodes anstelle von nur Buchstaben, fehler bei Temperatur repariert",
-				"ru": "Исправлены проблемы с датчиком, отображать только 3 реле на домашнем устройстве anel, отображать код типа вместо только буквы, фиксированная температура",
-				"pt": "Problemas corrigidos com sensor, exibição de apenas 3 relés em um dispositivo doméstico, código de tipo de exibição em vez de apenas letra, temperatura fixa",
-				"nl": "Problemen met sensor opgelost, slechts 3 relais op een apparaat in huis weergeven, typecode weergeven in plaats van alleen letter, vaste temperatuur",
-				"fr": "Problèmes résolus avec le capteur, afficher seulement 3 relais sur l'appareil anel home, afficher le code de type au lieu de seulement une lettre, température fixe",
-				"it": "Risolti i problemi con il sensore, visualizza solo 3 relè su un dispositivo domestico, visualizza il codice del tipo invece della sola lettera, temperatura fissa",
-				"es": "Se corrigieron problemas con el sensor, muestra solo 3 relés en un dispositivo doméstico anel, muestra el código de tipo en lugar de solo la letra, temperatura fija",
-				"pl": "Naprawiono problemy z czujnikiem, wyświetlanie tylko 3 przekaźników na jednym urządzeniu domowym, wyświetlanie kodu typu zamiast tylko litery, stała temperatura",
-				"zh-cn": "修复传感器问题，在anel家用设备上仅显示3个继电器，显示类型代码而不是字母，固定温度"
-			},
-			"1.0.7": {
-				"en": "Restructured code and implemented possibility to control io's",
-				"de": "Umstrukturierter Code und implementierte Möglichkeit zur Steuerung von Io",
-				"ru": "Реструктурированный код и реализована возможность управления io's",
-				"pt": "Código reestruturado e possibilidade implementada de controlar io's",
-				"nl": "Geherstructureerde code en geïmplementeerde mogelijkheid om io's te besturen",
-				"fr": "Code restructuré et possibilité implémentée de contrôler les io",
-				"it": "Codice ristrutturato e possibilità implementata di controllare gli io",
-				"es": "Código reestructurado y posibilidad implementada para controlar io's",
-				"pl": "Zrestrukturyzowany kod i zaimplementowana możliwość sterowania urządzeniami io",
-				"zh-cn": "重组代码并实现控制io的可能性"
-			},
-			"1.0.8": {
-				"en": "Quick Fix bug in io control",
-				"de": "Schnellkorrekturfehler in der Io-Steuerung",
-				"ru": "Быстрое исправление ошибки в io control",
-				"pt": "Correção rápida de bug no controle de IO",
-				"nl": "Snelle reparatiefout in io-besturing",
-				"fr": "Correction rapide d'un bug dans le contrôle io",
-				"it": "Correzione rapida di bug nel controllo io",
-				"es": "Error de corrección rápida en el control de io",
-				"pl": "Szybka naprawa błędu w sterowaniu io",
-				"zh-cn": "IO控制中的快速修复错误"
-			},
-			"1.0.10": {
-				"en": "Implemented XOR User/Password encryption. Improved logging/log levels;",
-				"de": "Implementierte XOR-Benutzer/Passwort-Verschlüsselung. ",
-				"ru": "Реализовано XOR-шифрование пользователя/пароля. ",
-				"pt": "Criptografia de usuário/senha XOR implementada. ",
-				"nl": "XOR-gebruiker/wachtwoord-encryptie geïmplementeerd. ",
-				"fr": "Cryptage utilisateur/mot de passe XOR implémenté. ",
-				"it": "Crittografia utente/password XOR implementata. ",
-				"es": "Se implementó el cifrado XOR de usuario/contraseña. ",
-				"pl": "Wdrożone szyfrowanie XOR użytkownika/hasła. ",
-				"zh-cn": "实施 XOR 用户/密码加密。"
-			}
-		},
-		"title": "Anel Hut",
-		"titleLang": {
-			"en": "Anel Hut",
-			"de": "Anel Hut",
-			"ru": "Анель Хат",
-			"pt": "Cabana Anel",
-			"nl": "Anel Hut",
-			"fr": "Cabane Anel",
-			"it": "Anel Hut",
-			"es": "Anel Hut",
-			"pl": "Anel Hut",
-			"zh-cn": "阿内尔小屋"
-		},
-		"desc": {
-			"en": "Adapter for the NET-PwrCrtl devices of ANEL Electronic AG.  Supported Devices: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"de": "Adapter für die NET-PwrCrtl-Geräte der von der ANEL Electronic AG.  Unterstützte Geräte: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"ru": "Адаптер для устройств NET-PwrCrtl компании ANEL Electronic AG.  Поддерживаемые устройства: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"pt": "Adaptador para os dispositivos NET-PwrCrtl da ANEL Electronic AG.  Dispositivos com suporte: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"nl": "Adapter voor de NET-PwrCrtl-apparaten van ANEL Electronic AG.  Ondersteunde apparaten: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"fr": "Adaptateur pour les appareils NET-PwrCrtl d'ANEL Electronic AG.  Appareils pris en charge: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"it": "Adattatore per i dispositivi NET-PwrCrtl di ANEL Electronic AG.  Dispositivi supportati: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"es": "Adaptador para los dispositivos NET-PwrCrtl de ANEL Electronic AG.  Dispositivos compatibles: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"pl": "Adapter do urządzeń NET-PwrCrtl obsługiwanych urządzeń ANEL Electronic AG. NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
-			"zh-cn": "适用于ANEL Electronic AG的NET-PwrCrtl设备的适配器支持的设备：NET-PwrCtrl HUT，NET-PwrCtrl IO，HOME，PRO，POWER，ADV"
-		},
-		"authors": ["dan1-de <dan1-de@gmx.de>"],
-		"keywords": ["Anel", "Hut", "NetCtrl", "PowerHut"],
-		"license": "MIT",
-		"platform": "Javascript/Node.js",
-		"main": "build/main.js",
-		"icon": "anelhut.png",
-		"enabled": true,
-		"extIcon": "https://raw.githubusercontent.com/dan1-de/ioBroker.anelhut/master/admin/anelhut.png",
-		"readme": "https://github.com/dan1-de/ioBroker.anelhut/blob/master/README.md",
-		"loglevel": "info",
-		"mode": "daemon",
-		"type": "iot-systems",
-		"compact": true,
-		"connectionType": "local",
-		"dataSource": "poll",
-		"materialize": true,
-		"dependencies": [
-			{
-				"js-controller": ">=2.0.0"
-			}
-		]
-	},
-	"native": {
-		"DeviceName": "",
-		"DeviceIP": "",
-		"UDPSendPort": 75,
-		"UDPRecievePort": 77,
-		"Username": "admin",
-		"Password": "anel",
-		"UserPasswordXOR": false
-	},
-	"objects": [],
-	"instanceObjects": [
-		{
-			"_id": "info",
-			"type": "channel",
-			"common": {
-				"name": "Information"
-			},
-			"native": {}
-		},
-		{
-			"_id": "info.connection",
-			"type": "state",
-			"common": {
-				"role": "indicator.connected",
-				"name": "If connected to at least one device",
-				"type": "boolean",
-				"read": true,
-				"write": false,
-				"def": false
-			},
-			"native": {}
-		}
-	]
+    "common": {
+        "name": "anelhut",
+        "version": "1.0.11",
+        "news": {
+            "1.0.0": {
+                "en": "initial release",
+                "de": "Erstveröffentlichung",
+                "ru": "Начальная версия",
+                "pt": "lançamento inicial",
+                "nl": "Eerste uitgave",
+                "fr": "Première version",
+                "it": "Versione iniziale",
+                "es": "Versión inicial",
+                "pl": "Pierwsze wydanie",
+                "zh-cn": "首次出版"
+            },
+            "1.0.3": {
+                "en": "Improvements: logging, udp broadcast adress, configuration",
+                "de": "Verbesserungen: Protokollierung, udp-Broadcast-Adresse, Konfiguration",
+                "ru": "Улучшения: ведение журнала, широковещательный адрес udp, конфигурация",
+                "pt": "Melhorias: registro, endereço de transmissão udp, configuração",
+                "nl": "Verbeteringen: logboekregistratie, udp-uitzendadres, configuratie",
+                "fr": "Améliorations: journalisation, adresse de diffusion udp, configuration",
+                "it": "Miglioramenti: registrazione, indirizzo di trasmissione udp, configurazione",
+                "es": "Mejoras: registro, dirección de transmisión udp, configuración",
+                "pl": "Ulepszenia: logowanie, adres transmisji UDP, konfiguracja",
+                "zh-cn": "改进：日志记录，udp广播地址，配置"
+            },
+            "1.0.4": {
+                "en": "New Icon, Improved object structure",
+                "de": "Neues Symbol, verbesserte Objektstruktur",
+                "ru": "Новый значок, улучшенная структура объекта",
+                "pt": "Novo ícone, estrutura de objeto aprimorada",
+                "nl": "Nieuw pictogram, verbeterde objectstructuur",
+                "fr": "Nouvelle icône, structure d'objet améliorée",
+                "it": "Nuova icona, struttura degli oggetti migliorata",
+                "es": "Nuevo icono, estructura de objeto mejorada",
+                "pl": "Nowa ikona, ulepszona struktura obiektu",
+                "zh-cn": "新图标，改进的对象结构"
+            },
+            "1.0.6": {
+                "en": "Fixed issues with sensor, display only 3 relais at anel home device, display type code instead of only letter, fixed temperature",
+                "de": "Behobene Probleme mit dem Sensor, Anzeige von nur 3 Relais an einem Heimgerät, Anzeige des Typcodes anstelle von nur Buchstaben, fehler bei Temperatur repariert",
+                "ru": "Исправлены проблемы с датчиком, отображать только 3 реле на домашнем устройстве anel, отображать код типа вместо только буквы, фиксированная температура",
+                "pt": "Problemas corrigidos com sensor, exibição de apenas 3 relés em um dispositivo doméstico, código de tipo de exibição em vez de apenas letra, temperatura fixa",
+                "nl": "Problemen met sensor opgelost, slechts 3 relais op een apparaat in huis weergeven, typecode weergeven in plaats van alleen letter, vaste temperatuur",
+                "fr": "Problèmes résolus avec le capteur, afficher seulement 3 relais sur l'appareil anel home, afficher le code de type au lieu de seulement une lettre, température fixe",
+                "it": "Risolti i problemi con il sensore, visualizza solo 3 relè su un dispositivo domestico, visualizza il codice del tipo invece della sola lettera, temperatura fissa",
+                "es": "Se corrigieron problemas con el sensor, muestra solo 3 relés en un dispositivo doméstico anel, muestra el código de tipo en lugar de solo la letra, temperatura fija",
+                "pl": "Naprawiono problemy z czujnikiem, wyświetlanie tylko 3 przekaźników na jednym urządzeniu domowym, wyświetlanie kodu typu zamiast tylko litery, stała temperatura",
+                "zh-cn": "修复传感器问题，在anel家用设备上仅显示3个继电器，显示类型代码而不是字母，固定温度"
+            },
+            "1.0.7": {
+                "en": "Restructured code and implemented possibility to control io's",
+                "de": "Umstrukturierter Code und implementierte Möglichkeit zur Steuerung von Io",
+                "ru": "Реструктурированный код и реализована возможность управления io's",
+                "pt": "Código reestruturado e possibilidade implementada de controlar io's",
+                "nl": "Geherstructureerde code en geïmplementeerde mogelijkheid om io's te besturen",
+                "fr": "Code restructuré et possibilité implémentée de contrôler les io",
+                "it": "Codice ristrutturato e possibilità implementata di controllare gli io",
+                "es": "Código reestructurado y posibilidad implementada para controlar io's",
+                "pl": "Zrestrukturyzowany kod i zaimplementowana możliwość sterowania urządzeniami io",
+                "zh-cn": "重组代码并实现控制io的可能性"
+            },
+            "1.0.8": {
+                "en": "Quick Fix bug in io control",
+                "de": "Schnellkorrekturfehler in der Io-Steuerung",
+                "ru": "Быстрое исправление ошибки в io control",
+                "pt": "Correção rápida de bug no controle de IO",
+                "nl": "Snelle reparatiefout in io-besturing",
+                "fr": "Correction rapide d'un bug dans le contrôle io",
+                "it": "Correzione rapida di bug nel controllo io",
+                "es": "Error de corrección rápida en el control de io",
+                "pl": "Szybka naprawa błędu w sterowaniu io",
+                "zh-cn": "IO控制中的快速修复错误"
+            },
+            "1.0.10": {
+                "en": "Implemented XOR User/Password encryption. Improved logging/log levels;",
+                "de": "Implementierte XOR-Benutzer/Passwort-Verschlüsselung. ",
+                "ru": "Реализовано XOR-шифрование пользователя/пароля. ",
+                "pt": "Criptografia de usuário/senha XOR implementada. ",
+                "nl": "XOR-gebruiker/wachtwoord-encryptie geïmplementeerd. ",
+                "fr": "Cryptage utilisateur/mot de passe XOR implémenté. ",
+                "it": "Crittografia utente/password XOR implementata. ",
+                "es": "Se implementó el cifrado XOR de usuario/contraseña. ",
+                "pl": "Wdrożone szyfrowanie XOR użytkownika/hasła. ",
+                "zh-cn": "实施 XOR 用户/密码加密。"
+            },
+            "1.0.11": {
+                "en": "(dan1-de) Implemented fix for Relais Status 'You are assigning a number to the state which expects a boolean' Github issue/26",
+                "de": "(dan1-de) Implementierter Fix für Relais Status 'Sie weisen dem Zustand eine Zahl zu, die einen booleschen Wert erwartet' Github issue/26",
+                "ru": "(dan1-de) Реализовано исправление для состояния Relais «Вы назначаете номер состоянию, которое ожидает логическое значение» проблема Github/26",
+                "pt": "(dan1-de) Correção implementada para Relais Status 'Você está atribuindo um número ao estado que espera um booleano' Github issue/26",
+                "nl": "(dan1-de) Geïmplementeerde oplossing voor Relais Status 'U wijst een nummer toe aan de status die een boolean verwacht' Github-probleem/26",
+                "fr": "(dan1-de) Correctif implémenté pour le statut de relais 'Vous attribuez un numéro à l'état qui attend un booléen' Github issue/26",
+                "it": "(dan1-de) Correzione implementata per lo stato del Relais \"Stai assegnando un numero allo stato che prevede un problema booleano\" Github problema/26",
+                "es": "(dan1-de) Corrección implementada para Relais Status 'Estás asignando un número al estado que espera un booleano' Problema de Github/26",
+                "pl": "(dan1-de) Zaimplementowano poprawkę dotyczącą statusu Relais „Przypisujesz numer do stanu, który oczekuje wartości logicznej” Problem Github/26",
+                "zh-cn": "(dan1-de) Relais Status 的实施修复“您正在为需要布尔值的状态分配一个数字”Github 问题/26"
+            }
+        },
+        "title": "Anel Hut",
+        "titleLang": {
+            "en": "Anel Hut",
+            "de": "Anel Hut",
+            "ru": "Анель Хат",
+            "pt": "Cabana Anel",
+            "nl": "Anel Hut",
+            "fr": "Cabane Anel",
+            "it": "Anel Hut",
+            "es": "Anel Hut",
+            "pl": "Anel Hut",
+            "zh-cn": "阿内尔小屋"
+        },
+        "desc": {
+            "en": "Adapter for the NET-PwrCrtl devices of ANEL Electronic AG.  Supported Devices: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "de": "Adapter für die NET-PwrCrtl-Geräte der von der ANEL Electronic AG.  Unterstützte Geräte: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "ru": "Адаптер для устройств NET-PwrCrtl компании ANEL Electronic AG.  Поддерживаемые устройства: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "pt": "Adaptador para os dispositivos NET-PwrCrtl da ANEL Electronic AG.  Dispositivos com suporte: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "nl": "Adapter voor de NET-PwrCrtl-apparaten van ANEL Electronic AG.  Ondersteunde apparaten: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "fr": "Adaptateur pour les appareils NET-PwrCrtl d'ANEL Electronic AG.  Appareils pris en charge: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "it": "Adattatore per i dispositivi NET-PwrCrtl di ANEL Electronic AG.  Dispositivi supportati: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "es": "Adaptador para los dispositivos NET-PwrCrtl de ANEL Electronic AG.  Dispositivos compatibles: NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "pl": "Adapter do urządzeń NET-PwrCrtl obsługiwanych urządzeń ANEL Electronic AG. NET-PwrCtrl HUT, NET-PwrCtrl IO, HOME, PRO, POWER, ADV",
+            "zh-cn": "适用于ANEL Electronic AG的NET-PwrCrtl设备的适配器支持的设备：NET-PwrCtrl HUT，NET-PwrCtrl IO，HOME，PRO，POWER，ADV"
+        },
+        "authors": [
+            "dan1-de <dan1-de@gmx.de>"
+        ],
+        "keywords": [
+            "Anel",
+            "Hut",
+            "NetCtrl",
+            "PowerHut"
+        ],
+        "license": "MIT",
+        "platform": "Javascript/Node.js",
+        "main": "build/main.js",
+        "icon": "anelhut.png",
+        "enabled": true,
+        "extIcon": "https://raw.githubusercontent.com/dan1-de/ioBroker.anelhut/master/admin/anelhut.png",
+        "readme": "https://github.com/dan1-de/ioBroker.anelhut/blob/master/README.md",
+        "loglevel": "info",
+        "mode": "daemon",
+        "type": "iot-systems",
+        "compact": true,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "materialize": true,
+        "dependencies": [
+            {
+                "js-controller": ">=2.0.0"
+            }
+        ]
+    },
+    "native": {
+        "DeviceName": "",
+        "DeviceIP": "",
+        "UDPSendPort": 75,
+        "UDPRecievePort": 77,
+        "Username": "admin",
+        "Password": "anel",
+        "UserPasswordXOR": false
+    },
+    "objects": [],
+    "instanceObjects": [
+        {
+            "_id": "info",
+            "type": "channel",
+            "common": {
+                "name": "Information"
+            },
+            "native": {}
+        },
+        {
+            "_id": "info.connection",
+            "type": "state",
+            "common": {
+                "role": "indicator.connected",
+                "name": "If connected to at least one device",
+                "type": "boolean",
+                "read": true,
+                "write": false,
+                "def": false
+            },
+            "native": {}
+        }
+    ]
 }

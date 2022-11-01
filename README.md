@@ -67,6 +67,10 @@ Please use the latest firmeware (4.2). You can download it from https://de.anel.
 
 ## Changelog
 
+### 1.0.11
+
+-   (dan1-de) Implemented fix for Relais Status "You are assigning a number to the state which expects a boolean" Github issue/26
+
 ### 1.0.10
 
 -   (dan1-de) Implemented XOR User/Password encryption; improved logging/log levels;
