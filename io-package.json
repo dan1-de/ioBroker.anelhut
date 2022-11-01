@@ -74,6 +74,18 @@
 				"es": "Error de corrección rápida en el control de io",
 				"pl": "Szybka naprawa błędu w sterowaniu io",
 				"zh-cn": "IO控制中的快速修复错误"
+			},
+			"1.0.10": {
+				"en": "Implemented XOR User/Password encryption. Improved logging/log levels;",
+				"de": "Implementierte XOR-Benutzer/Passwort-Verschlüsselung. ",
+				"ru": "Реализовано XOR-шифрование пользователя/пароля. ",
+				"pt": "Criptografia de usuário/senha XOR implementada. ",
+				"nl": "XOR-gebruiker/wachtwoord-encryptie geïmplementeerd. ",
+				"fr": "Cryptage utilisateur/mot de passe XOR implémenté. ",
+				"it": "Crittografia utente/password XOR implementata. ",
+				"es": "Se implementó el cifrado XOR de usuario/contraseña. ",
+				"pl": "Wdrożone szyfrowanie XOR użytkownika/hasła. ",
+				"zh-cn": "实施 XOR 用户/密码加密。"
 			}
 		},
 		"title": "Anel Hut",

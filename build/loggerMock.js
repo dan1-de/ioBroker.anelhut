@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MockLogger = void 0;
 class MockLogger {
+    //eslint-disable-next-line @typescript-eslint/no-empty-function
     constructor() {
         this.level = "debug";
     }
