@@ -67,7 +67,7 @@ Please use the latest firmeware (4.2). You can download it from https://de.anel.
 
 ## Changelog
 
-### 1.0.12
+### 1.0.13
 
 -   (dan1-de) Improved error message for user/password missing. Added new Testcase for Message decode of NET-PWRCTRL_07.1
 
