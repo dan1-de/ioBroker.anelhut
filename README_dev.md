@@ -8,7 +8,7 @@ npm run build
 
 npm run test
 
-## Release & Publish
+## Release & Publish Checklist
 
 Increase Version number in package.json
 Increase Version number in io-package.json and add releasenotes for this version in the "news" section
