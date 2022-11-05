@@ -193,7 +193,7 @@ class AnelHutCommunication {
         if (messageParts[2] == "NoPass") {
             // const nopass = messageParts[1];
             //error
-            this.logger.error("Decode Message Error: NoPass");
+            this.logger.error("Decode Message Error: Username and/or Password is missing");
             return hutData;
         }
         hutData.DeviceType = messageParts[0];

@@ -43,4 +43,15 @@ describe("Message Decode Tests", () => {
 			"{'DeviceType':'NET-PwrCtrl','DeviceName':'BUERO','IP':'192.168.55.48','Netmask':'255.255.255.0','Gateway':'192.168.55.1','MacAdress':'00:04:A3:0A:03:32','Relais':[{'RelaisNumber':1,'Name':'Switch Bro 1','Status':1},{'RelaisNumber':2,'Name':'Monitore auen','Status':1},{'RelaisNumber':3,'Name':'Nr. 3','Status':0},{'RelaisNumber':4,'Name':'Laptop','Status':0},{'RelaisNumber':5,'Name':'Lautsprecher','Status':1},{'RelaisNumber':6,'Name':'PC','Status':1},{'RelaisNumber':7,'Name':'Monitor Mitte','Status':1},{'RelaisNumber':8,'Name':'Tischlampe','Status':0}],'Blocked':33,'HttpPort':80,'Temperature':-127,'Type':'P'}";
 		assert.equal(ExpectedResponseJson, JSON.stringify(HutdataResponse).replace(/"/g, "'"));
 	});
+	it("Decode Example from github issues/27", () => {
+		const udpMessage =
+			"NET-PwrCtrl:NET-CONTROL :192.168.30.7:255.255.255.0:192.168.30.254:0.4.163.20 .3.118:Modem,1:Firewall,1:Unifi Switch,1:frei,1:Raspimatic,1:Weatherman,1:Sonos, 1:Dayton,0:0:80:IO.1,0,0:IO.2,0,0:IO.3,0,0:IO.4,0,0:IO.5,0,0:IO.6,0,0:IO.7,0,0:I O.8,0,0:24.7▒C:NET-PWRCTRL_07.1:a:n:xor:";
+		const communication = new AnelHutCommunication("192.168.55.48", 77, 75, "", "", new MockLogger(), false);
+		const HutdataResponse = communication.DecodeMessage(udpMessage);
+		console.log(JSON.stringify(HutdataResponse));
+		communication.CloseSocket();
+		const ExpectedResponseJson =
+			"{'DeviceType':'NET-PwrCtrl','DeviceName':'NET-CONTROL','IP':'192.168.30.7','Netmask':'255.255.255.0','Gateway':'192.168.30.254','MacAdress':'00:04:A3:14:03:76','Relais':[{'RelaisNumber':1,'Name':'Modem','Status':1},{'RelaisNumber':2,'Name':'Firewall','Status':1},{'RelaisNumber':3,'Name':'Unifi Switch','Status':1},{'RelaisNumber':4,'Name':'frei','Status':1},{'RelaisNumber':5,'Name':'Raspimatic','Status':1},{'RelaisNumber':6,'Name':'Weatherman','Status':1},{'RelaisNumber':7,'Name':'Sonos','Status':1},{'RelaisNumber':8,'Name':'Dayton','Status':0}],'Blocked':0,'HttpPort':80,'Temperature':24.7,'Type':'ADV','IO':[],'Firmware':'NET-PWRCTRL_07.1','PowerMeasurement':false,'Sensor_1_Ready':false,'XOR_USER_Password':true}";
+		assert.equal(ExpectedResponseJson, JSON.stringify(HutdataResponse).replace(/"/g, "'"));
+	});
 });
