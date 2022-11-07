@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "anelhut",
-        "version": "1.0.13",
+        "version": "1.0.14",
         "news": {
             "1.0.0": {
                 "en": "initial release",
@@ -122,6 +122,18 @@
                 "es": "Mensaje de error mejorado para usuario/contraseña faltante. ",
                 "pl": "Poprawiono komunikat o błędzie dotyczący braku użytkownika/hasła. ",
                 "zh-cn": "改进了用户/密码丢失的错误消息。"
+            },
+            "1.0.14": {
+                "en": "Added new Logs messages for Relais Switch Command in Debug Mode",
+                "de": "Neue Protokollmeldungen für Relais Switch Command im Debug-Modus hinzugefügt",
+                "ru": "Добавлены новые сообщения журнала для команды Relais Switch в режиме отладки.",
+                "pt": "Adicionadas novas mensagens de logs para o comando Relais Switch no modo de depuração",
+                "nl": "Nieuwe logberichten toegevoegd voor Relais Switch Command in Debug Mode",
+                "fr": "Ajout de nouveaux messages de journaux pour la commande de commutateur de relais en mode débogage",
+                "it": "Aggiunti nuovi messaggi di registro per il comando interruttore relais in modalità debug",
+                "es": "Se agregaron nuevos mensajes de registro para Relais Switch Command en modo de depuración",
+                "pl": "Dodano nowe komunikaty dziennika dla polecenia Relais Switch w trybie debugowania",
+                "zh-cn": "为调试模式下的 Relais Switch 命令添加了新的日志消息"
             }
         },
         "title": "Anel Hut",
