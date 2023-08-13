@@ -222,7 +222,10 @@ class Anelhut extends utils.Adapter {
 			},
 			native: {},
 		});
-		this.setState(parentDeviceName + "." + variableName, value, true);
+		if (value != undefined) {
+			// bugfix for new jscontroller >= 5.09
+			this.setState(parentDeviceName + "." + variableName, value, true);
+		}
 	}
 
 	private anelConfigDevices!: Array<AnelHut>;

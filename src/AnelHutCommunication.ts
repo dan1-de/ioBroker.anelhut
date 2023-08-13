@@ -165,8 +165,9 @@ export class AnelHutCommunication {
 			this.logger.debug("Password encryption enabled. EncrPasswd: " + encr_user_password);
 		} else {
 			bef = command + user_password; //for example: Sw_on1adminanel
-			this.logger.debug("Password encryption disabled");
+			this.logger.debug("Password encryption disabled. UserPassword: " + user_password);
 		}
+		this.logger.debug("Sending Command to Device: " + bef);
 
 		const client = dgram.createSocket("udp4");
 		client.send(bef, this.udpSendPort, this.hostIpAdress, (err) => {
