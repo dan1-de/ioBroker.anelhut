@@ -69,7 +69,7 @@ Please use the latest firmeware (4.2). You can download it from https://de.anel.
 
 ### 1.0.15
 
--   (dan1-de) Bugfix for new jscontroller >= 5.09
+-   (dan1-de) Bugfix for new jscontroller 5
 
 ### 1.0.14
 
