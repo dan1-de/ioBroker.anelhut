@@ -67,6 +67,10 @@ Please use the latest firmeware (4.2). You can download it from https://de.anel.
 
 ## Changelog
 
+### 1.0.15
+
+-   (dan1-de) Bugfix for new jscontroller >= 5.09
+
 ### 1.0.14
 
 -   (dan1-de) Added new Logs messages for Relais Switch Command in Debug Mode

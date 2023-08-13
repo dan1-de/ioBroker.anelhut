@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "anelhut",
-        "version": "1.0.14",
+        "version": "1.0.15",
         "news": {
             "1.0.0": {
                 "en": "initial release",
@@ -134,6 +134,18 @@
                 "es": "Se agregaron nuevos mensajes de registro para Relais Switch Command en modo de depuración",
                 "pl": "Dodano nowe komunikaty dziennika dla polecenia Relais Switch w trybie debugowania",
                 "zh-cn": "为调试模式下的 Relais Switch 命令添加了新的日志消息"
+            },
+            "1.0.15": {
+                "en": "Bugfix for new jscontroller >= 5.09",
+                "de": "Bugfix für neuen jscontroller >= 5.09",
+                "ru": "Исправление для нового jscontroller >= 5.09",
+                "pt": "Correção de bug para o novo jscontroller >= 5.09",
+                "nl": "Bugfix voor nieuwe jscontroller >= 5.09",
+                "fr": "Correction de bug pour le nouveau jscontroller >= 5.09",
+                "it": "Bugfix per il nuovo jscontroller >= 5.09",
+                "es": "Corrección de errores para el nuevo jscontroller >= 5.09",
+                "pl": "Poprawka dla nowego jscontrollera >= 5.09",
+                "zh-cn": "新 jscontroller >= 5.09 的错误修复"
             }
         },
         "title": "Anel Hut",
