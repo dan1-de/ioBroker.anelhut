@@ -123,7 +123,7 @@ Please use the latest firmeware (4.2). You can download it from https://de.anel.
 
 MIT License
 
-Copyright (c) 2021 dan1-de <dan1-de@gmx.de>
+Copyright (c) 2023 dan1-de dan1-de@gmx.de
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
