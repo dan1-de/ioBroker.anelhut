@@ -204,6 +204,7 @@
         "extIcon": "https://raw.githubusercontent.com/dan1-de/ioBroker.anelhut/master/admin/anelhut.png",
         "readme": "https://github.com/dan1-de/ioBroker.anelhut/blob/master/README.md",
         "loglevel": "info",
+        "tier": 2,
         "mode": "daemon",
         "type": "iot-systems",
         "compact": true,
