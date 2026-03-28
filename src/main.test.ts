@@ -5,7 +5,7 @@
  * It is advised to test all your modules with accompanying *.test.ts-files
  */
 
-import assert from "assert";
+import assert from "node:assert";
 import { AnelHutCommunication } from "./AnelHutCommunication";
 import { MockLogger } from "./loggerMock";
 
