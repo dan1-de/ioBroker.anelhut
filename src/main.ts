@@ -11,7 +11,7 @@ import { HutData } from "./HutData";
 import { AnelHut } from "./lib/adapter-config";
 
 // Load your modules here, e.g.:
-// import * as fs from "fs";
+// import * as fs from "node:fs";
 
 class Anelhut extends utils.Adapter {
 	public constructor(options: Partial<utils.AdapterOptions> = {}) {

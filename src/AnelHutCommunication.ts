@@ -1,6 +1,6 @@
 import { Subject } from "rxjs";
 import { HutData, IOState, Relais } from "./HutData";
-import dgram = require("dgram");
+import dgram = require("node:dgram");
 
 export class AnelHutCommunication {
 	private socket: any;
