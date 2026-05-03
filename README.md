@@ -119,6 +119,8 @@ Please use the latest firmeware (4.2). You can download it from https://de.anel.
 
 -   (dan1-de) initial release
 
+[Older changelogs can be found there](CHANGELOG_OLD.md)
+
 ## License
 
 MIT License
